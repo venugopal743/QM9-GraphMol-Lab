@@ -4,27 +4,28 @@ This project is fully prepared for continuous deployment on **GitHub** and **Ver
 
 ---
 
-## Part 1: Push to GitHub
+## Part 1: GitHub Pages & Repository
 
-1. Create a new repository on GitHub:
-   * Go to [github.com/new](https://github.com/new)
-   * Repository name: e.g. `QM9-GraphMol-Lab` (or `molecular-ai`)
-   * Choose **Public** or **Private**
-   * **Do not** initialize with README or .gitignore (they are already created)
-   * Click **Create repository**
+Your repository is connected at:
+`https://github.com/venugopal743/QM9-GraphMol-Lab`
 
-2. Link your local project to GitHub and push:
-   Open **PowerShell** or **Command Prompt** and run:
-   ```bash
-   cd "C:\Users\chunc_yhjtd63\.gemini\antigravity\scratch\qm9-gnn-project\QM9-GNN-Molecular-AI"
-   git remote add origin https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>.git
-   git push -u origin main
-   ```
-   *(Replace `<YOUR_GITHUB_USERNAME>` and `<YOUR_REPO_NAME>` with your actual GitHub username and repository name)*
+### GitHub Pages (Instant Free Web Hosting)
+1. Go to your repository **Settings** $\rightarrow$ **Pages** (in the left sidebar).
+2. Under **Build and deployment**:
+   * **Source**: `Deploy from a branch`
+   * **Branch**: `main`
+   * **Folder**: `/ (root)`
+3. Click **Save**.
+4. GitHub Pages will build in under 30 seconds with a green checkmark `✓`!
+5. Your live site will be accessible at:
+   **`https://venugopal743.github.io/QM9-GraphMol-Lab/`**
+
+> [!NOTE]
+> Root `index.html`, `assets/`, `.nojekyll`, and `library_bundle.json` are preconfigured so the site runs completely in static mode on GitHub Pages, including 17 curated molecules, live kinetic canvas preview, downside working analysis, and animated benchmark graphs.
 
 ---
 
-## Part 2: Deploy to Vercel
+## Part 2: Deploy to Vercel (Full Python FastAPI Serverless Backend)
 
 ### Method A: Connect with GitHub (Recommended — Auto-deploys on every git push)
 1. Go to [vercel.com](https://vercel.com) and log in with your GitHub account.

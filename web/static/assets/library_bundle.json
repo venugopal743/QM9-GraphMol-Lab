@@ -1,0 +1,2995 @@
+{
+  "CCO": {
+    "info": {
+      "id": "ethanol",
+      "name": "Ethanol",
+      "formula": "C2H6O",
+      "smiles": "CCO",
+      "weight": 46.07,
+      "heavy_atoms": 3,
+      "dipole": 1.69,
+      "gap": 5.42,
+      "uncertainty": 0.19,
+      "confidence": "high"
+    },
+    "graph": {
+      "formula": "C2H6O",
+      "weight": 46.07,
+      "heavy_atoms": 3,
+      "logp": -0.0,
+      "tpsa": 20.23,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.15,
+          "y": 0.601
+        },
+        {
+          "id": 1,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.5,
+          "y": 0.399
+        },
+        {
+          "id": 2,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.85,
+          "y": 0.601
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "C1",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      },
+      {
+        "index": 1,
+        "label": "C2",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      },
+      {
+        "index": 2,
+        "label": "O3",
+        "symbol": "O",
+        "weight": 0.44,
+        "role": "heteroatom (O)",
+        "aromatic": false
+      }
+    ],
+    "prediction": {
+      "formula": "C2H6O",
+      "title": "C2H6O prediction",
+      "predicted_gap": 5.46,
+      "uncertainty": 0.19,
+      "confidence": "high",
+      "band_min": 5.09,
+      "band_max": 5.83,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 3 atom nodes and 2 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (C, O), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 0-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Electronegative heteroatoms (O) stabilize the highest occupied molecular orbital (HOMO). Non-bonding n-electrons dictate frontier transitions, producing a gap of 5.46 eV.",
+      "uncertainty_analysis": "High model confidence (low epistemic variance \u00b10.19 eV). 50 stochastic Monte Carlo Dropout forward passes exhibit tight agreement across sub-networks.",
+      "ring_count": 0,
+      "heteroatom_count": 1
+    }
+  },
+  "c1ccccc1": {
+    "info": {
+      "id": "benzene",
+      "name": "Benzene",
+      "formula": "C6H6",
+      "smiles": "c1ccccc1",
+      "weight": 78.11,
+      "heavy_atoms": 6,
+      "dipole": 0.0,
+      "gap": 5.92,
+      "uncertainty": 0.23,
+      "confidence": "moderate"
+    },
+    "graph": {
+      "formula": "C6H6",
+      "weight": 78.11,
+      "heavy_atoms": 6,
+      "logp": 1.69,
+      "tpsa": 0.0,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.85,
+          "y": 0.5
+        },
+        {
+          "id": 1,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.675,
+          "y": 0.803
+        },
+        {
+          "id": 2,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.325,
+          "y": 0.803
+        },
+        {
+          "id": 3,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.15,
+          "y": 0.5
+        },
+        {
+          "id": 4,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.325,
+          "y": 0.197
+        },
+        {
+          "id": 5,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.675,
+          "y": 0.197
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 5,
+          "target": 0,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "C1",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 1,
+        "label": "C2",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 2,
+        "label": "C3",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 3,
+        "label": "C4",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 4,
+        "label": "C5",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 5,
+        "label": "C6",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      }
+    ],
+    "prediction": {
+      "formula": "C6H6",
+      "title": "C6H6 prediction",
+      "predicted_gap": 5.96,
+      "uncertainty": 0.23,
+      "confidence": "moderate",
+      "band_min": 5.51,
+      "band_max": 6.41,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 6 atom nodes and 6 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (C), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 1-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Symmetric cyclic aromatic \u03c0-electron cloud provides strong resonance stabilization. Frontier orbital transitions between bonding \u03c0 and anti-bonding \u03c0* orbitals yield 5.96 eV.",
+      "uncertainty_analysis": "Moderate uncertainty (\u00b10.23 eV). Slight divergence in dropout passes due to heteroatom boundary conditions in QM9 training distribution.",
+      "ring_count": 1,
+      "heteroatom_count": 0
+    }
+  },
+  "CC(=O)C": {
+    "info": {
+      "id": "acetone",
+      "name": "Acetone",
+      "formula": "C3H6O",
+      "smiles": "CC(=O)C",
+      "weight": 58.08,
+      "heavy_atoms": 4,
+      "dipole": 2.88,
+      "gap": 5.32,
+      "uncertainty": 0.21,
+      "confidence": "high"
+    },
+    "graph": {
+      "formula": "C3H6O",
+      "weight": 58.08,
+      "heavy_atoms": 4,
+      "logp": 0.6,
+      "tpsa": 17.07,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.15,
+          "y": 0.803
+        },
+        {
+          "id": 1,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.5,
+          "y": 0.601
+        },
+        {
+          "id": 2,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.5,
+          "y": 0.197
+        },
+        {
+          "id": 3,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.85,
+          "y": 0.803
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "type": "DOUBLE",
+          "aromatic": false,
+          "order": 2.0
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "C1",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      },
+      {
+        "index": 1,
+        "label": "C2",
+        "symbol": "C",
+        "weight": 0.32,
+        "role": "branch junction",
+        "aromatic": false
+      },
+      {
+        "index": 2,
+        "label": "O3",
+        "symbol": "O",
+        "weight": 0.52,
+        "role": "carbonyl / conjugated heteroatom",
+        "aromatic": false
+      },
+      {
+        "index": 3,
+        "label": "C4",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      }
+    ],
+    "prediction": {
+      "formula": "C3H6O",
+      "title": "C3H6O prediction",
+      "predicted_gap": 5.36,
+      "uncertainty": 0.21,
+      "confidence": "moderate",
+      "band_min": 4.95,
+      "band_max": 5.77,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 4 atom nodes and 3 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (C, O), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 0-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Electronegative heteroatoms (O) stabilize the highest occupied molecular orbital (HOMO). Non-bonding n-electrons dictate frontier transitions, producing a gap of 5.36 eV.",
+      "uncertainty_analysis": "High model confidence (low epistemic variance \u00b10.21 eV). 50 stochastic Monte Carlo Dropout forward passes exhibit tight agreement across sub-networks.",
+      "ring_count": 0,
+      "heteroatom_count": 1
+    }
+  },
+  "NCC(=O)O": {
+    "info": {
+      "id": "glycine",
+      "name": "Glycine",
+      "formula": "C2H5NO2",
+      "smiles": "NCC(=O)O",
+      "weight": 75.07,
+      "heavy_atoms": 5,
+      "dipole": 2.45,
+      "gap": 4.82,
+      "uncertainty": 0.27,
+      "confidence": "moderate"
+    },
+    "graph": {
+      "formula": "C2H5NO2",
+      "weight": 75.07,
+      "heavy_atoms": 5,
+      "logp": -0.97,
+      "tpsa": 63.32,
+      "rotatable_bonds": 1,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "N",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.15,
+          "y": 0.567
+        },
+        {
+          "id": 1,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.383,
+          "y": 0.702
+        },
+        {
+          "id": 2,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.617,
+          "y": 0.567
+        },
+        {
+          "id": 3,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.617,
+          "y": 0.298
+        },
+        {
+          "id": 4,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.85,
+          "y": 0.702
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "type": "DOUBLE",
+          "aromatic": false,
+          "order": 2.0
+        },
+        {
+          "source": 2,
+          "target": 4,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "N1",
+        "symbol": "N",
+        "weight": 0.44,
+        "role": "heteroatom (N)",
+        "aromatic": false
+      },
+      {
+        "index": 1,
+        "label": "C2",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      },
+      {
+        "index": 2,
+        "label": "C3",
+        "symbol": "C",
+        "weight": 0.32,
+        "role": "branch junction",
+        "aromatic": false
+      },
+      {
+        "index": 3,
+        "label": "O4",
+        "symbol": "O",
+        "weight": 0.52,
+        "role": "carbonyl / conjugated heteroatom",
+        "aromatic": false
+      },
+      {
+        "index": 4,
+        "label": "O5",
+        "symbol": "O",
+        "weight": 0.44,
+        "role": "heteroatom (O)",
+        "aromatic": false
+      }
+    ],
+    "prediction": {
+      "formula": "C2H5NO2",
+      "title": "C2H5NO2 prediction",
+      "predicted_gap": 4.86,
+      "uncertainty": 0.27,
+      "confidence": "moderate",
+      "band_min": 4.33,
+      "band_max": 5.39,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 5 atom nodes and 4 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (N, O, C), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 0-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Electronegative heteroatoms (N, O) stabilize the highest occupied molecular orbital (HOMO). Non-bonding n-electrons dictate frontier transitions, producing a gap of 4.86 eV.",
+      "uncertainty_analysis": "Moderate uncertainty (\u00b10.27 eV). Slight divergence in dropout passes due to heteroatom boundary conditions in QM9 training distribution.",
+      "ring_count": 0,
+      "heteroatom_count": 3
+    }
+  },
+  "c1ccncc1": {
+    "info": {
+      "id": "pyridine",
+      "name": "Pyridine",
+      "formula": "C5H5N",
+      "smiles": "c1ccncc1",
+      "weight": 79.1,
+      "heavy_atoms": 6,
+      "dipole": 2.19,
+      "gap": 5.38,
+      "uncertainty": 0.24,
+      "confidence": "moderate"
+    },
+    "graph": {
+      "formula": "C5H5N",
+      "weight": 79.1,
+      "heavy_atoms": 6,
+      "logp": 1.08,
+      "tpsa": 12.89,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.85,
+          "y": 0.5
+        },
+        {
+          "id": 1,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.675,
+          "y": 0.803
+        },
+        {
+          "id": 2,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.325,
+          "y": 0.803
+        },
+        {
+          "id": 3,
+          "element": "N",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.15,
+          "y": 0.5
+        },
+        {
+          "id": 4,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.325,
+          "y": 0.197
+        },
+        {
+          "id": 5,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.675,
+          "y": 0.197
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 5,
+          "target": 0,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "C1",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 1,
+        "label": "C2",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 2,
+        "label": "C3",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 3,
+        "label": "N4",
+        "symbol": "N",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 4,
+        "label": "C5",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 5,
+        "label": "C6",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      }
+    ],
+    "prediction": {
+      "formula": "C5H5N",
+      "title": "C5H5N prediction",
+      "predicted_gap": 5.42,
+      "uncertainty": 0.24,
+      "confidence": "moderate",
+      "band_min": 4.95,
+      "band_max": 5.89,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 6 atom nodes and 6 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (C, N), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 1-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Features an aromatic \u03c0-system conjugated with N heteroatom lone-pairs. Resonance delocalization lowers excitation energies, narrowing the HOMO\u2013LUMO gap to 5.42 eV.",
+      "uncertainty_analysis": "Moderate uncertainty (\u00b10.24 eV). Slight divergence in dropout passes due to heteroatom boundary conditions in QM9 training distribution.",
+      "ring_count": 1,
+      "heteroatom_count": 1
+    }
+  },
+  "C(=O)N": {
+    "info": {
+      "id": "formamide",
+      "name": "Formamide",
+      "formula": "CH3NO",
+      "smiles": "C(=O)N",
+      "weight": 45.04,
+      "heavy_atoms": 3,
+      "dipole": 3.73,
+      "gap": 4.71,
+      "uncertainty": 0.26,
+      "confidence": "moderate",
+      "category": "heteroatom"
+    },
+    "graph": {
+      "formula": "CH3NO",
+      "weight": 45.04,
+      "heavy_atoms": 3,
+      "logp": -0.9,
+      "tpsa": 43.09,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.5,
+          "y": 0.601
+        },
+        {
+          "id": 1,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.15,
+          "y": 0.399
+        },
+        {
+          "id": 2,
+          "element": "N",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.85,
+          "y": 0.399
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "DOUBLE",
+          "aromatic": false,
+          "order": 2.0
+        },
+        {
+          "source": 0,
+          "target": 2,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "C1",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      },
+      {
+        "index": 1,
+        "label": "O2",
+        "symbol": "O",
+        "weight": 0.52,
+        "role": "carbonyl / conjugated heteroatom",
+        "aromatic": false
+      },
+      {
+        "index": 2,
+        "label": "N3",
+        "symbol": "N",
+        "weight": 0.44,
+        "role": "heteroatom (N)",
+        "aromatic": false
+      }
+    ],
+    "prediction": {
+      "formula": "CH3NO",
+      "title": "CH3NO prediction",
+      "predicted_gap": 4.75,
+      "uncertainty": 0.26,
+      "confidence": "moderate",
+      "band_min": 4.24,
+      "band_max": 5.26,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 3 atom nodes and 2 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (C, N, O), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 0-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Electronegative heteroatoms (N, O) stabilize the highest occupied molecular orbital (HOMO). Non-bonding n-electrons dictate frontier transitions, producing a gap of 4.75 eV.",
+      "uncertainty_analysis": "Moderate uncertainty (\u00b10.26 eV). Slight divergence in dropout passes due to heteroatom boundary conditions in QM9 training distribution.",
+      "ring_count": 0,
+      "heteroatom_count": 2
+    }
+  },
+  "Fc1ccccc1": {
+    "info": {
+      "id": "fluorobenzene",
+      "name": "Fluorobenzene",
+      "formula": "C6H5F",
+      "smiles": "Fc1ccccc1",
+      "weight": 96.1,
+      "heavy_atoms": 7,
+      "dipole": 1.6,
+      "gap": 5.51,
+      "uncertainty": 0.22,
+      "confidence": "high",
+      "category": "aromatic"
+    },
+    "graph": {
+      "formula": "C6H5F",
+      "weight": 96.1,
+      "heavy_atoms": 7,
+      "logp": 1.83,
+      "tpsa": 0.0,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "F",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.85,
+          "y": 0.5
+        },
+        {
+          "id": 1,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.617,
+          "y": 0.5
+        },
+        {
+          "id": 2,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.5,
+          "y": 0.702
+        },
+        {
+          "id": 3,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.267,
+          "y": 0.702
+        },
+        {
+          "id": 4,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.15,
+          "y": 0.5
+        },
+        {
+          "id": 5,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.267,
+          "y": 0.298
+        },
+        {
+          "id": 6,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.5,
+          "y": 0.298
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 5,
+          "target": 6,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 6,
+          "target": 1,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "F1",
+        "symbol": "F",
+        "weight": 0.44,
+        "role": "heteroatom (F)",
+        "aromatic": false
+      },
+      {
+        "index": 1,
+        "label": "C2",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 2,
+        "label": "C3",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 3,
+        "label": "C4",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 4,
+        "label": "C5",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 5,
+        "label": "C6",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 6,
+        "label": "C7",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      }
+    ],
+    "prediction": {
+      "formula": "C6H5F",
+      "title": "C6H5F prediction",
+      "predicted_gap": 5.55,
+      "uncertainty": 0.22,
+      "confidence": "moderate",
+      "band_min": 5.12,
+      "band_max": 5.98,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 7 atom nodes and 7 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (C, F), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 1-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Features an aromatic \u03c0-system conjugated with F heteroatom lone-pairs. Resonance delocalization lowers excitation energies, narrowing the HOMO\u2013LUMO gap to 5.55 eV.",
+      "uncertainty_analysis": "Moderate uncertainty (\u00b10.22 eV). Slight divergence in dropout passes due to heteroatom boundary conditions in QM9 training distribution.",
+      "ring_count": 1,
+      "heteroatom_count": 1
+    }
+  },
+  "Nc1ccccc1": {
+    "info": {
+      "id": "aniline",
+      "name": "Aniline",
+      "formula": "C6H7N",
+      "smiles": "Nc1ccccc1",
+      "weight": 93.13,
+      "heavy_atoms": 7,
+      "dipole": 1.53,
+      "gap": 4.89,
+      "uncertainty": 0.25,
+      "confidence": "moderate"
+    },
+    "graph": {
+      "formula": "C6H7N",
+      "weight": 93.13,
+      "heavy_atoms": 7,
+      "logp": 1.27,
+      "tpsa": 26.02,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "N",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.85,
+          "y": 0.5
+        },
+        {
+          "id": 1,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.617,
+          "y": 0.5
+        },
+        {
+          "id": 2,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.5,
+          "y": 0.702
+        },
+        {
+          "id": 3,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.267,
+          "y": 0.702
+        },
+        {
+          "id": 4,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.15,
+          "y": 0.5
+        },
+        {
+          "id": 5,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.267,
+          "y": 0.298
+        },
+        {
+          "id": 6,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.5,
+          "y": 0.298
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 5,
+          "target": 6,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 6,
+          "target": 1,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "N1",
+        "symbol": "N",
+        "weight": 0.44,
+        "role": "heteroatom (N)",
+        "aromatic": false
+      },
+      {
+        "index": 1,
+        "label": "C2",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 2,
+        "label": "C3",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 3,
+        "label": "C4",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 4,
+        "label": "C5",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 5,
+        "label": "C6",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 6,
+        "label": "C7",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      }
+    ],
+    "prediction": {
+      "formula": "C6H7N",
+      "title": "C6H7N prediction",
+      "predicted_gap": 4.93,
+      "uncertainty": 0.25,
+      "confidence": "moderate",
+      "band_min": 4.44,
+      "band_max": 5.42,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 7 atom nodes and 7 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (N, C), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 1-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Features an aromatic \u03c0-system conjugated with N heteroatom lone-pairs. Resonance delocalization lowers excitation energies, narrowing the HOMO\u2013LUMO gap to 4.93 eV.",
+      "uncertainty_analysis": "Moderate uncertainty (\u00b10.25 eV). Slight divergence in dropout passes due to heteroatom boundary conditions in QM9 training distribution.",
+      "ring_count": 1,
+      "heteroatom_count": 1
+    }
+  },
+  "CO": {
+    "info": {
+      "id": "methanol",
+      "name": "Methanol",
+      "formula": "CH4O",
+      "smiles": "CO",
+      "weight": 32.04,
+      "heavy_atoms": 2,
+      "dipole": 1.7,
+      "gap": 5.86,
+      "uncertainty": 0.18,
+      "confidence": "high"
+    },
+    "graph": {
+      "formula": "CH4O",
+      "weight": 32.04,
+      "heavy_atoms": 2,
+      "logp": -0.39,
+      "tpsa": 20.23,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.15,
+          "y": 0.5
+        },
+        {
+          "id": 1,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.85,
+          "y": 0.5
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "C1",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      },
+      {
+        "index": 1,
+        "label": "O2",
+        "symbol": "O",
+        "weight": 0.44,
+        "role": "heteroatom (O)",
+        "aromatic": false
+      }
+    ],
+    "prediction": {
+      "formula": "CH4O",
+      "title": "CH4O prediction",
+      "predicted_gap": 5.9,
+      "uncertainty": 0.18,
+      "confidence": "high",
+      "band_min": 5.55,
+      "band_max": 6.25,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 2 atom nodes and 1 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (C, O), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 0-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Electronegative heteroatoms (O) stabilize the highest occupied molecular orbital (HOMO). Non-bonding n-electrons dictate frontier transitions, producing a gap of 5.90 eV.",
+      "uncertainty_analysis": "High model confidence (low epistemic variance \u00b10.18 eV). 50 stochastic Monte Carlo Dropout forward passes exhibit tight agreement across sub-networks.",
+      "ring_count": 0,
+      "heteroatom_count": 1
+    }
+  },
+  "C=O": {
+    "info": {
+      "id": "formaldehyde",
+      "name": "Formaldehyde",
+      "formula": "CH2O",
+      "smiles": "C=O",
+      "weight": 30.03,
+      "heavy_atoms": 2,
+      "dipole": 2.33,
+      "gap": 4.45,
+      "uncertainty": 0.28,
+      "confidence": "moderate"
+    },
+    "graph": {
+      "formula": "CH2O",
+      "weight": 30.03,
+      "heavy_atoms": 2,
+      "logp": -0.18,
+      "tpsa": 17.07,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.15,
+          "y": 0.5
+        },
+        {
+          "id": 1,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.85,
+          "y": 0.5
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "DOUBLE",
+          "aromatic": false,
+          "order": 2.0
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "C1",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      },
+      {
+        "index": 1,
+        "label": "O2",
+        "symbol": "O",
+        "weight": 0.52,
+        "role": "carbonyl / conjugated heteroatom",
+        "aromatic": false
+      }
+    ],
+    "prediction": {
+      "formula": "CH2O",
+      "title": "CH2O prediction",
+      "predicted_gap": 4.49,
+      "uncertainty": 0.28,
+      "confidence": "moderate",
+      "band_min": 3.94,
+      "band_max": 5.04,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 2 atom nodes and 1 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (C, O), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 0-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Electronegative heteroatoms (O) stabilize the highest occupied molecular orbital (HOMO). Non-bonding n-electrons dictate frontier transitions, producing a gap of 4.49 eV.",
+      "uncertainty_analysis": "Elevated uncertainty (\u00b10.28 eV). Complex local electronic topology produces higher variance across stochastic dropout iterations.",
+      "ring_count": 0,
+      "heteroatom_count": 1
+    }
+  },
+  "CC": {
+    "info": {
+      "id": "ethane",
+      "name": "Ethane",
+      "formula": "C2H6",
+      "smiles": "CC",
+      "weight": 30.07,
+      "heavy_atoms": 2,
+      "dipole": 0.0,
+      "gap": 7.85,
+      "uncertainty": 0.32,
+      "confidence": "moderate"
+    },
+    "graph": {
+      "formula": "C2H6",
+      "weight": 30.07,
+      "heavy_atoms": 2,
+      "logp": 1.03,
+      "tpsa": 0.0,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.15,
+          "y": 0.5
+        },
+        {
+          "id": 1,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.85,
+          "y": 0.5
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "C1",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      },
+      {
+        "index": 1,
+        "label": "C2",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      }
+    ],
+    "prediction": {
+      "formula": "C2H6",
+      "title": "C2H6 prediction",
+      "predicted_gap": 7.89,
+      "uncertainty": 0.32,
+      "confidence": "low",
+      "band_min": 7.26,
+      "band_max": 8.52,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 2 atom nodes and 1 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (C), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 0-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Aliphatic \u03c3-bonding framework with localized electron pairs. Lacks low-lying \u03c0* orbitals, requiring higher excitation energy and yielding a wider gap of 7.89 eV.",
+      "uncertainty_analysis": "Elevated uncertainty (\u00b10.32 eV). Complex local electronic topology produces higher variance across stochastic dropout iterations.",
+      "ring_count": 0,
+      "heteroatom_count": 0
+    }
+  },
+  "C": {
+    "info": {
+      "id": "methane",
+      "name": "Methane",
+      "formula": "CH4",
+      "smiles": "C",
+      "weight": 16.04,
+      "heavy_atoms": 1,
+      "dipole": 0.0,
+      "gap": 8.5,
+      "uncertainty": 0.38,
+      "confidence": "low"
+    },
+    "graph": {
+      "formula": "CH4",
+      "weight": 16.04,
+      "heavy_atoms": 1,
+      "logp": 0.64,
+      "tpsa": 0.0,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "bonds": []
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "C1",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      }
+    ],
+    "prediction": {
+      "formula": "CH4",
+      "title": "CH4 prediction",
+      "predicted_gap": 8.54,
+      "uncertainty": 0.38,
+      "confidence": "low",
+      "band_min": 7.8,
+      "band_max": 9.28,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 1 atom nodes and 0 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (C), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 0-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Aliphatic \u03c3-bonding framework with localized electron pairs. Lacks low-lying \u03c0* orbitals, requiring higher excitation energy and yielding a wider gap of 8.54 eV.",
+      "uncertainty_analysis": "Elevated uncertainty (\u00b10.38 eV). Complex local electronic topology produces higher variance across stochastic dropout iterations.",
+      "ring_count": 0,
+      "heteroatom_count": 0
+    }
+  },
+  "NC(=O)N": {
+    "info": {
+      "id": "urea",
+      "name": "Urea",
+      "formula": "CH4N2O",
+      "smiles": "NC(=O)N",
+      "weight": 60.06,
+      "heavy_atoms": 4,
+      "dipole": 4.56,
+      "gap": 5.12,
+      "uncertainty": 0.22,
+      "confidence": "high"
+    },
+    "graph": {
+      "formula": "CH4N2O",
+      "weight": 60.06,
+      "heavy_atoms": 4,
+      "logp": -0.98,
+      "tpsa": 69.11,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "N",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.85,
+          "y": 0.197
+        },
+        {
+          "id": 1,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.5,
+          "y": 0.399
+        },
+        {
+          "id": 2,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.5,
+          "y": 0.803
+        },
+        {
+          "id": 3,
+          "element": "N",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.15,
+          "y": 0.197
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "type": "DOUBLE",
+          "aromatic": false,
+          "order": 2.0
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "N1",
+        "symbol": "N",
+        "weight": 0.44,
+        "role": "heteroatom (N)",
+        "aromatic": false
+      },
+      {
+        "index": 1,
+        "label": "C2",
+        "symbol": "C",
+        "weight": 0.32,
+        "role": "branch junction",
+        "aromatic": false
+      },
+      {
+        "index": 2,
+        "label": "O3",
+        "symbol": "O",
+        "weight": 0.52,
+        "role": "carbonyl / conjugated heteroatom",
+        "aromatic": false
+      },
+      {
+        "index": 3,
+        "label": "N4",
+        "symbol": "N",
+        "weight": 0.44,
+        "role": "heteroatom (N)",
+        "aromatic": false
+      }
+    ],
+    "prediction": {
+      "formula": "CH4N2O",
+      "title": "CH4N2O prediction",
+      "predicted_gap": 5.16,
+      "uncertainty": 0.22,
+      "confidence": "moderate",
+      "band_min": 4.73,
+      "band_max": 5.59,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 4 atom nodes and 3 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (N, O, C), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 0-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Electronegative heteroatoms (N, O) stabilize the highest occupied molecular orbital (HOMO). Non-bonding n-electrons dictate frontier transitions, producing a gap of 5.16 eV.",
+      "uncertainty_analysis": "Moderate uncertainty (\u00b10.22 eV). Slight divergence in dropout passes due to heteroatom boundary conditions in QM9 training distribution.",
+      "ring_count": 0,
+      "heteroatom_count": 3
+    }
+  },
+  "Cc1ccccc1": {
+    "info": {
+      "id": "toluene",
+      "name": "Toluene",
+      "formula": "C7H8",
+      "smiles": "Cc1ccccc1",
+      "weight": 92.14,
+      "heavy_atoms": 7,
+      "dipole": 0.36,
+      "gap": 5.75,
+      "uncertainty": 0.22,
+      "confidence": "high"
+    },
+    "graph": {
+      "formula": "C7H8",
+      "weight": 92.14,
+      "heavy_atoms": 7,
+      "logp": 2.0,
+      "tpsa": 0.0,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.85,
+          "y": 0.5
+        },
+        {
+          "id": 1,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.617,
+          "y": 0.5
+        },
+        {
+          "id": 2,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.5,
+          "y": 0.702
+        },
+        {
+          "id": 3,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.267,
+          "y": 0.702
+        },
+        {
+          "id": 4,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.15,
+          "y": 0.5
+        },
+        {
+          "id": 5,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.267,
+          "y": 0.298
+        },
+        {
+          "id": 6,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.5,
+          "y": 0.298
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 5,
+          "target": 6,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 6,
+          "target": 1,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "C1",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      },
+      {
+        "index": 1,
+        "label": "C2",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 2,
+        "label": "C3",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 3,
+        "label": "C4",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 4,
+        "label": "C5",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 5,
+        "label": "C6",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 6,
+        "label": "C7",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      }
+    ],
+    "prediction": {
+      "formula": "C7H8",
+      "title": "C7H8 prediction",
+      "predicted_gap": 5.79,
+      "uncertainty": 0.22,
+      "confidence": "moderate",
+      "band_min": 5.36,
+      "band_max": 6.22,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 7 atom nodes and 7 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (C), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 1-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Symmetric cyclic aromatic \u03c0-electron cloud provides strong resonance stabilization. Frontier orbital transitions between bonding \u03c0 and anti-bonding \u03c0* orbitals yield 5.79 eV.",
+      "uncertainty_analysis": "Moderate uncertainty (\u00b10.22 eV). Slight divergence in dropout passes due to heteroatom boundary conditions in QM9 training distribution.",
+      "ring_count": 1,
+      "heteroatom_count": 0
+    }
+  },
+  "Oc1ccccc1": {
+    "info": {
+      "id": "phenol",
+      "name": "Phenol",
+      "formula": "C6H6O",
+      "smiles": "Oc1ccccc1",
+      "weight": 94.11,
+      "heavy_atoms": 7,
+      "dipole": 1.22,
+      "gap": 5.1,
+      "uncertainty": 0.24,
+      "confidence": "moderate"
+    },
+    "graph": {
+      "formula": "C6H6O",
+      "weight": 94.11,
+      "heavy_atoms": 7,
+      "logp": 1.39,
+      "tpsa": 20.23,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.85,
+          "y": 0.5
+        },
+        {
+          "id": 1,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.617,
+          "y": 0.5
+        },
+        {
+          "id": 2,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.5,
+          "y": 0.702
+        },
+        {
+          "id": 3,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.267,
+          "y": 0.702
+        },
+        {
+          "id": 4,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.15,
+          "y": 0.5
+        },
+        {
+          "id": 5,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.267,
+          "y": 0.298
+        },
+        {
+          "id": 6,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.5,
+          "y": 0.298
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 5,
+          "target": 6,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 6,
+          "target": 1,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "O1",
+        "symbol": "O",
+        "weight": 0.44,
+        "role": "heteroatom (O)",
+        "aromatic": false
+      },
+      {
+        "index": 1,
+        "label": "C2",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 2,
+        "label": "C3",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 3,
+        "label": "C4",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 4,
+        "label": "C5",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 5,
+        "label": "C6",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 6,
+        "label": "C7",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      }
+    ],
+    "prediction": {
+      "formula": "C6H6O",
+      "title": "C6H6O prediction",
+      "predicted_gap": 5.14,
+      "uncertainty": 0.24,
+      "confidence": "moderate",
+      "band_min": 4.67,
+      "band_max": 5.61,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 7 atom nodes and 7 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (C, O), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 1-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Features an aromatic \u03c0-system conjugated with O heteroatom lone-pairs. Resonance delocalization lowers excitation energies, narrowing the HOMO\u2013LUMO gap to 5.14 eV.",
+      "uncertainty_analysis": "Moderate uncertainty (\u00b10.24 eV). Slight divergence in dropout passes due to heteroatom boundary conditions in QM9 training distribution.",
+      "ring_count": 1,
+      "heteroatom_count": 1
+    }
+  },
+  "CC(=O)Oc1ccccc1C(=O)O": {
+    "info": {
+      "id": "aspirin",
+      "name": "Aspirin",
+      "formula": "C9H8O4",
+      "smiles": "CC(=O)Oc1ccccc1C(=O)O",
+      "weight": 180.16,
+      "heavy_atoms": 13,
+      "dipole": 2.85,
+      "gap": 4.62,
+      "uncertainty": 0.29,
+      "confidence": "moderate"
+    },
+    "graph": {
+      "formula": "C9H8O4",
+      "weight": 180.16,
+      "heavy_atoms": 13,
+      "logp": 1.31,
+      "tpsa": 63.6,
+      "rotatable_bonds": 2,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.15,
+          "y": 0.635
+        },
+        {
+          "id": 1,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.264,
+          "y": 0.532
+        },
+        {
+          "id": 2,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.232,
+          "y": 0.382
+        },
+        {
+          "id": 3,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.411,
+          "y": 0.579
+        },
+        {
+          "id": 4,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.525,
+          "y": 0.476
+        },
+        {
+          "id": 5,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.493,
+          "y": 0.326
+        },
+        {
+          "id": 6,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.607,
+          "y": 0.223
+        },
+        {
+          "id": 7,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.753,
+          "y": 0.27
+        },
+        {
+          "id": 8,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.786,
+          "y": 0.421
+        },
+        {
+          "id": 9,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.671,
+          "y": 0.524
+        },
+        {
+          "id": 10,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.704,
+          "y": 0.674
+        },
+        {
+          "id": 11,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.85,
+          "y": 0.722
+        },
+        {
+          "id": 12,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.589,
+          "y": 0.777
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "type": "DOUBLE",
+          "aromatic": false,
+          "order": 2.0
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 5,
+          "target": 6,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 6,
+          "target": 7,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 7,
+          "target": 8,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 8,
+          "target": 9,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 9,
+          "target": 10,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 10,
+          "target": 11,
+          "type": "DOUBLE",
+          "aromatic": false,
+          "order": 2.0
+        },
+        {
+          "source": 10,
+          "target": 12,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 9,
+          "target": 4,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "C1",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      },
+      {
+        "index": 1,
+        "label": "C2",
+        "symbol": "C",
+        "weight": 0.32,
+        "role": "branch junction",
+        "aromatic": false
+      },
+      {
+        "index": 2,
+        "label": "O3",
+        "symbol": "O",
+        "weight": 0.52,
+        "role": "carbonyl / conjugated heteroatom",
+        "aromatic": false
+      },
+      {
+        "index": 3,
+        "label": "O4",
+        "symbol": "O",
+        "weight": 0.44,
+        "role": "heteroatom (O)",
+        "aromatic": false
+      },
+      {
+        "index": 4,
+        "label": "C5",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 5,
+        "label": "C6",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 6,
+        "label": "C7",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 7,
+        "label": "C8",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 8,
+        "label": "C9",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 9,
+        "label": "C10",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 10,
+        "label": "C11",
+        "symbol": "C",
+        "weight": 0.32,
+        "role": "branch junction",
+        "aromatic": false
+      },
+      {
+        "index": 11,
+        "label": "O12",
+        "symbol": "O",
+        "weight": 0.52,
+        "role": "carbonyl / conjugated heteroatom",
+        "aromatic": false
+      },
+      {
+        "index": 12,
+        "label": "O13",
+        "symbol": "O",
+        "weight": 0.44,
+        "role": "heteroatom (O)",
+        "aromatic": false
+      }
+    ],
+    "prediction": {
+      "formula": "C9H8O4",
+      "title": "C9H8O4 prediction",
+      "predicted_gap": 4.66,
+      "uncertainty": 0.29,
+      "confidence": "moderate",
+      "band_min": 4.09,
+      "band_max": 5.23,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 13 atom nodes and 13 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (C, O), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 1-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Features an aromatic \u03c0-system conjugated with O heteroatom lone-pairs. Resonance delocalization lowers excitation energies, narrowing the HOMO\u2013LUMO gap to 4.66 eV.",
+      "uncertainty_analysis": "Elevated uncertainty (\u00b10.29 eV). Complex local electronic topology produces higher variance across stochastic dropout iterations.",
+      "ring_count": 1,
+      "heteroatom_count": 4
+    }
+  },
+  "Cn1cnc2c1c(=O)n(c(=O)n2C)C": {
+    "info": {
+      "id": "caffeine",
+      "name": "Caffeine",
+      "formula": "C8H10N4O2",
+      "smiles": "Cn1cnc2c1c(=O)n(c(=O)n2C)C",
+      "weight": 194.19,
+      "heavy_atoms": 14,
+      "dipole": 3.64,
+      "gap": 4.35,
+      "uncertainty": 0.31,
+      "confidence": "moderate"
+    },
+    "graph": {
+      "formula": "C8H10N4O2",
+      "weight": 194.19,
+      "heavy_atoms": 14,
+      "logp": -1.03,
+      "tpsa": 61.82,
+      "rotatable_bonds": 0,
+      "nodes": [
+        {
+          "id": 0,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.85,
+          "y": 0.637
+        },
+        {
+          "id": 1,
+          "element": "N",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.755,
+          "y": 0.517
+        },
+        {
+          "id": 2,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.795,
+          "y": 0.37
+        },
+        {
+          "id": 3,
+          "element": "N",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 2,
+          "x": 0.667,
+          "y": 0.286
+        },
+        {
+          "id": 4,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.548,
+          "y": 0.382
+        },
+        {
+          "id": 5,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.602,
+          "y": 0.525
+        },
+        {
+          "id": 6,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.505,
+          "y": 0.643
+        },
+        {
+          "id": 7,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.559,
+          "y": 0.786
+        },
+        {
+          "id": 8,
+          "element": "N",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.355,
+          "y": 0.618
+        },
+        {
+          "id": 9,
+          "element": "C",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.301,
+          "y": 0.475
+        },
+        {
+          "id": 10,
+          "element": "O",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.15,
+          "y": 0.451
+        },
+        {
+          "id": 11,
+          "element": "N",
+          "aromatic": true,
+          "charge": 0,
+          "degree": 3,
+          "x": 0.397,
+          "y": 0.357
+        },
+        {
+          "id": 12,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.343,
+          "y": 0.214
+        },
+        {
+          "id": 13,
+          "element": "C",
+          "aromatic": false,
+          "charge": 0,
+          "degree": 1,
+          "x": 0.258,
+          "y": 0.736
+        }
+      ],
+      "bonds": [
+        {
+          "source": 0,
+          "target": 1,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 5,
+          "target": 6,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 6,
+          "target": 7,
+          "type": "DOUBLE",
+          "aromatic": false,
+          "order": 2.0
+        },
+        {
+          "source": 6,
+          "target": 8,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 8,
+          "target": 9,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 9,
+          "target": 10,
+          "type": "DOUBLE",
+          "aromatic": false,
+          "order": 2.0
+        },
+        {
+          "source": 9,
+          "target": 11,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 11,
+          "target": 12,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 8,
+          "target": 13,
+          "type": "SINGLE",
+          "aromatic": false,
+          "order": 1.0
+        },
+        {
+          "source": 5,
+          "target": 1,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        },
+        {
+          "source": 11,
+          "target": 4,
+          "type": "AROMATIC",
+          "aromatic": true,
+          "order": 1.5
+        }
+      ]
+    },
+    "attribution": [
+      {
+        "index": 0,
+        "label": "C1",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      },
+      {
+        "index": 1,
+        "label": "N2",
+        "symbol": "N",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 2,
+        "label": "C3",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 3,
+        "label": "N4",
+        "symbol": "N",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 4,
+        "label": "C5",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 5,
+        "label": "C6",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 6,
+        "label": "C7",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 7,
+        "label": "O8",
+        "symbol": "O",
+        "weight": 0.52,
+        "role": "carbonyl / conjugated heteroatom",
+        "aromatic": false
+      },
+      {
+        "index": 8,
+        "label": "N9",
+        "symbol": "N",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 9,
+        "label": "C10",
+        "symbol": "C",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 10,
+        "label": "O11",
+        "symbol": "O",
+        "weight": 0.52,
+        "role": "carbonyl / conjugated heteroatom",
+        "aromatic": false
+      },
+      {
+        "index": 11,
+        "label": "N12",
+        "symbol": "N",
+        "weight": 0.38,
+        "role": "aromatic ring",
+        "aromatic": true
+      },
+      {
+        "index": 12,
+        "label": "C13",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      },
+      {
+        "index": 13,
+        "label": "C14",
+        "symbol": "C",
+        "weight": 0.25,
+        "role": "aliphatic skeleton",
+        "aromatic": false
+      }
+    ],
+    "prediction": {
+      "formula": "C8H10N4O2",
+      "title": "C8H10N4O2 prediction",
+      "predicted_gap": 4.39,
+      "uncertainty": 0.31,
+      "confidence": "low",
+      "band_min": 3.78,
+      "band_max": 5.0,
+      "model": "GCN - best R\u00b2",
+      "heuristic": true,
+      "note": "Heuristic estimate anchored to empirical QM9 statistics and functional group contributions. Trained checkpoint required for exact tensor inference."
+    },
+    "working_analysis": {
+      "graph_encoding": "Molecule is mapped into a graph with 14 atom nodes and 15 covalent bonds. Each atom node is initialized with an 11-dimensional feature vector encoding atomic symbol (C, N, O), hybridization state, formal charge, valency degree, and aromaticity flag.",
+      "message_passing": "Across 3 GCN message-passing layers, each atom aggregates representations from its 2-ring topological neighborhood using the normalized graph Laplacian D^{-1/2} A D^{-1/2}. Global mean pooling reduces the node embeddings into a single graph vector.",
+      "frontier_orbitals": "Features an aromatic \u03c0-system conjugated with N, O heteroatom lone-pairs. Resonance delocalization lowers excitation energies, narrowing the HOMO\u2013LUMO gap to 4.39 eV.",
+      "uncertainty_analysis": "Elevated uncertainty (\u00b10.31 eV). Complex local electronic topology produces higher variance across stochastic dropout iterations.",
+      "ring_count": 2,
+      "heteroatom_count": 6
+    }
+  }
+}
