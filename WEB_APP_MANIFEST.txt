@@ -1,0 +1,3 @@
+MolecularAI Web App
+Built around the uploaded QM9-GNN-UNCERTAINITY-EXPLAINABILITY project.
+Original research files are preserved in-place under src/ and results/.

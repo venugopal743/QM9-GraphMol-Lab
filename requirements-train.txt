@@ -1,0 +1,13 @@
+# Full training and development dependencies (including PyTorch & PyTorch Geometric)
+torch
+torch-geometric
+rdkit
+pandas
+numpy
+matplotlib
+scikit-learn
+tqdm
+fastapi>=0.100.0
+uvicorn>=0.20.0
+python-multipart>=0.0.6
+pydantic>=2.0.0
