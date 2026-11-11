@@ -235,6 +235,67 @@ function setupScrollSpy() {
 // Hero Animated Molecular Canvas (Live Graph Projection)
 // =====================================================================
 
+function getThemeAccent() {
+  const theme = document.documentElement.getAttribute('data-theme') || 'aurora';
+  if (theme === 'plasma') {
+    return {
+      primary: '#ff4d8d',
+      primaryRgba: 'rgba(255, 77, 141, 0.72)',
+      primarySoft: 'rgba(255, 77, 141, 0.14)',
+      secondary: '#a855f7',
+      secondaryRgba: 'rgba(168, 85, 247, 0.78)',
+      core: '#11081f',
+      grid: 'rgba(192, 132, 252, 0.08)'
+    };
+  }
+  if (theme === 'daylight') {
+    return {
+      primary: '#10b981',
+      primaryRgba: 'rgba(16, 185, 129, 0.78)',
+      primarySoft: 'rgba(16, 185, 129, 0.14)',
+      secondary: '#6366f1',
+      secondaryRgba: 'rgba(99, 102, 241, 0.80)',
+      core: '#0f172a',
+      grid: 'rgba(255, 255, 255, 0.06)'
+    };
+  }
+  return {
+    primary: '#00f5a0',
+    primaryRgba: 'rgba(0, 245, 160, 0.72)',
+    primarySoft: 'rgba(0, 245, 160, 0.13)',
+    secondary: '#8b5cf6',
+    secondaryRgba: 'rgba(139, 92, 246, 0.80)',
+    core: '#070a12',
+    grid: 'rgba(255, 255, 255, 0.055)'
+  };
+}
+
+function initThemeSwitcher() {
+  const saved = localStorage.getItem('qm9_theme') || 'aurora';
+  applyTheme(saved);
+
+  $$('.theme-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      applyTheme(btn.dataset.theme);
+    });
+  });
+}
+
+function applyTheme(theme) {
+  const valid = ['aurora', 'daylight', 'plasma'].includes(theme) ? theme : 'aurora';
+  document.documentElement.setAttribute('data-theme', valid);
+  localStorage.setItem('qm9_theme', valid);
+
+  $$('.theme-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.theme === valid);
+  });
+
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  if (metaTheme) {
+    metaTheme.setAttribute('content', valid === 'daylight' ? '#f2f5fb' : valid === 'plasma' ? '#08040e' : '#05060b');
+  }
+}
+
 function startHeroAnimation() {
   const canvas = $('#heroCanvas');
   if (!canvas) return;
@@ -252,10 +313,10 @@ function startHeroAnimation() {
     { label: 'C', x: width * 0.25, y: height * 0.65, color: '#93c5fd', r: 16 },
     { label: 'C', x: width * 0.40, y: height * 0.45, color: '#93c5fd', r: 16 },
     { label: 'C', x: width * 0.43, y: height * 0.22, color: '#93c5fd', r: 16 },
-    { label: 'O', x: width * 0.55, y: height * 0.65, color: '#f43f5e', r: 16 },
+    { label: 'O', x: width * 0.55, y: height * 0.65, color: '#fb7185', r: 16 },
     { label: 'C', x: width * 0.70, y: height * 0.45, color: '#93c5fd', r: 16 },
-    { label: 'O', x: width * 0.73, y: height * 0.20, color: '#f43f5e', r: 16 },
-    { label: 'N', x: width * 0.82, y: height * 0.65, color: '#22d3ee', r: 16 },
+    { label: 'O', x: width * 0.73, y: height * 0.20, color: '#fb7185', r: 16 },
+    { label: 'N', x: width * 0.82, y: height * 0.65, color: '#00f5a0', r: 16 },
     { label: 'C', x: width * 0.65, y: height * 0.85, color: '#93c5fd', r: 16 },
   ];
 
@@ -266,22 +327,23 @@ function startHeroAnimation() {
   let step = 0;
 
   function render() {
+    const accent = getThemeAccent();
     ctx.clearRect(0, 0, width, height);
     step += 0.02;
 
     // Subtle grid
-    ctx.strokeStyle = 'rgba(26, 41, 63, 0.2)';
+    ctx.strokeStyle = accent.grid;
     ctx.lineWidth = 1;
-    for (let x = 0; x < width; x += 40) {
+    for (let x = 0; x < width; x += 36) {
       ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
     }
-    for (let y = 0; y < height; y += 40) {
+    for (let y = 0; y < height; y += 36) {
       ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
     }
 
     // Ambient radial glow behind the graph
-    const centerGlow = ctx.createRadialGradient(width * 0.55, height * 0.5, 30, width * 0.55, height * 0.5, 200);
-    centerGlow.addColorStop(0, 'rgba(34, 211, 238, 0.12)');
+    const centerGlow = ctx.createRadialGradient(width * 0.55, height * 0.5, 30, width * 0.55, height * 0.5, 210);
+    centerGlow.addColorStop(0, accent.primarySoft);
     centerGlow.addColorStop(1, 'transparent');
     ctx.fillStyle = centerGlow;
     ctx.fillRect(0, 0, width, height);
@@ -293,7 +355,7 @@ function startHeroAnimation() {
     });
 
     // Dark ring fills
-    ctx.fillStyle = 'rgba(10, 20, 35, 0.6)';
+    ctx.fillStyle = 'rgba(139, 92, 246, 0.12)';
     ctx.beginPath();
     ctx.moveTo(nodes[1].curX, nodes[1].curY);
     ctx.lineTo(nodes[3].curX, nodes[3].curY);
@@ -305,7 +367,7 @@ function startHeroAnimation() {
     bonds.forEach(([i, j]) => {
       const a = nodes[i];
       const b = nodes[j];
-      ctx.strokeStyle = 'rgba(34, 211, 238, 0.5)';
+      ctx.strokeStyle = accent.primaryRgba;
       ctx.lineWidth = 2.5;
       ctx.beginPath();
       ctx.moveTo(a.curX, a.curY);
@@ -315,25 +377,26 @@ function startHeroAnimation() {
 
     // Nodes
     nodes.forEach(n => {
+      const nodeRing = n.label === 'N' ? accent.primary : n.color;
       const grad = ctx.createRadialGradient(n.curX, n.curY, n.r * 0.4, n.curX, n.curY, n.r * 2.2);
-      grad.addColorStop(0, n.color === '#f43f5e' ? 'rgba(244, 63, 94, 0.35)' : 'rgba(34, 211, 238, 0.3)');
+      grad.addColorStop(0, n.label === 'O' ? 'rgba(251, 113, 133, 0.38)' : accent.primarySoft);
       grad.addColorStop(1, 'transparent');
       ctx.fillStyle = grad;
       ctx.beginPath();
       ctx.arc(n.curX, n.curY, n.r * 2.2, 0, Math.PI * 2);
       ctx.fill();
 
-      ctx.fillStyle = '#070d14';
+      ctx.fillStyle = accent.core;
       ctx.beginPath();
       ctx.arc(n.curX, n.curY, n.r, 0, Math.PI * 2);
       ctx.fill();
 
-      ctx.strokeStyle = n.color;
+      ctx.strokeStyle = nodeRing;
       ctx.lineWidth = 2.5;
       ctx.stroke();
 
       ctx.fillStyle = '#fff';
-      ctx.font = 'bold 12px Inter, sans-serif';
+      ctx.font = 'bold 12px "Plus Jakarta Sans", sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(n.label, n.curX, n.curY);
@@ -487,10 +550,12 @@ function renderCanvasFrame(canvas, cState) {
   ctx.save();
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
+  const accent = getThemeAccent();
+
   ctx.clearRect(0, 0, w, h);
 
   // Background subtle grid
-  ctx.strokeStyle = 'rgba(26, 41, 63, 0.22)';
+  ctx.strokeStyle = accent.grid;
   ctx.lineWidth = 1;
   for (let x = 0; x < w; x += 30) {
     ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
@@ -501,7 +566,7 @@ function renderCanvasFrame(canvas, cState) {
 
   // Soft ambient center molecular glow
   const ambGrad = ctx.createRadialGradient(w / 2, h / 2, 20, w / 2, h / 2, Math.max(w, h) * 0.6);
-  ambGrad.addColorStop(0, 'rgba(34, 211, 238, 0.06)');
+  ambGrad.addColorStop(0, accent.primarySoft);
   ambGrad.addColorStop(1, 'transparent');
   ctx.fillStyle = ambGrad;
   ctx.fillRect(0, 0, w, h);
@@ -571,7 +636,7 @@ function renderCanvasFrame(canvas, cState) {
     const endY = n1.curY + (n2.curY - n1.curY) * p;
 
     // Outer glow for connecting bonds
-    ctx.strokeStyle = b.aromatic ? 'rgba(168, 85, 247, 0.8)' : 'rgba(34, 211, 238, 0.7)';
+    ctx.strokeStyle = b.aromatic ? accent.secondaryRgba : accent.primaryRgba;
     ctx.lineWidth = (b.order === 2 ? 3.8 : 2.6) * Math.min(1.5, Math.max(0.7, cState.zoom));
     ctx.lineCap = 'round';
 
@@ -584,7 +649,7 @@ function renderCanvasFrame(canvas, cState) {
     if (p < 0.99) {
       const sparkGrad = ctx.createRadialGradient(endX, endY, 1, endX, endY, 12);
       sparkGrad.addColorStop(0, '#fff');
-      sparkGrad.addColorStop(0.4, 'rgba(34, 211, 238, 0.9)');
+      sparkGrad.addColorStop(0.4, accent.primaryRgba);
       sparkGrad.addColorStop(1, 'transparent');
       ctx.fillStyle = sparkGrad;
       ctx.beginPath();
@@ -597,7 +662,7 @@ function renderCanvasFrame(canvas, cState) {
       const pktY = n1.curY + (n2.curY - n1.curY) * packetT;
 
       ctx.fillStyle = '#fff';
-      ctx.shadowColor = b.aromatic ? '#c084fc' : '#22d3ee';
+      ctx.shadowColor = b.aromatic ? accent.secondary : accent.primary;
       ctx.shadowBlur = 12;
       ctx.beginPath();
       ctx.arc(pktX, pktY, 3.8 * Math.min(1.5, Math.max(0.7, cState.zoom)), 0, Math.PI * 2);
@@ -613,8 +678,8 @@ function renderCanvasFrame(canvas, cState) {
     const r = 16 * Math.min(1.5, Math.max(0.65, cState.zoom));
 
     let elemColor = '#93c5fd';
-    if (n.element === 'O') elemColor = '#f43f5e';
-    else if (n.element === 'N') elemColor = '#22d3ee';
+    if (n.element === 'O') elemColor = '#fb7185';
+    else if (n.element === 'N') elemColor = accent.primary;
     else if (n.element === 'C') elemColor = '#93c5fd';
     else if (n.element === 'F') elemColor = '#34d399';
     else if (n.element === 'S') elemColor = '#fbbf24';
@@ -623,15 +688,15 @@ function renderCanvasFrame(canvas, cState) {
     let haloColor = elemColor;
     if (attribution && attribution[idx]) {
       const weight = attribution[idx].weight;
-      if (weight >= 0.38) haloColor = '#f43f5e'; // high weight
-      else haloColor = '#a855f7'; // low weight
+      if (weight >= 0.38) haloColor = '#fb7185'; // high weight
+      else haloColor = accent.secondary; // low weight
     }
 
     // Breathing glow aura
     if (state.showGlow) {
       const pulseFactor = 1.9 + Math.sin(cState.animStep * 2.2 + idx) * 0.35;
       const grad = ctx.createRadialGradient(nx, ny, r * 0.35, nx, ny, r * pulseFactor);
-      grad.addColorStop(0, haloColor === '#f43f5e' ? 'rgba(244, 63, 94, 0.5)' : 'rgba(34, 211, 238, 0.42)');
+      grad.addColorStop(0, haloColor === '#fb7185' ? 'rgba(251, 113, 133, 0.5)' : accent.primarySoft);
       grad.addColorStop(1, 'transparent');
       ctx.fillStyle = grad;
       ctx.beginPath();
@@ -640,7 +705,7 @@ function renderCanvasFrame(canvas, cState) {
     }
 
     // Dark core body
-    ctx.fillStyle = '#070d14';
+    ctx.fillStyle = accent.core;
     ctx.beginPath();
     ctx.arc(nx, ny, r, 0, Math.PI * 2);
     ctx.fill();
@@ -1460,6 +1525,9 @@ $('#csvFileInput')?.addEventListener('change', async (e) => {
 // =====================================================================
 
 window.addEventListener('DOMContentLoaded', async () => {
+  // Initialize visual theme switcher (Aurora / Daylight / Plasma)
+  initThemeSwitcher();
+
   // Start continuous hero animation
   startHeroAnimation();
 
