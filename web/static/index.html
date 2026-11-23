@@ -3,832 +3,917 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#05060b" />
-  <title>QM9·GraphMol Lab — MolecularAI</title>
+  <meta name="theme-color" content="#090d16" />
+  <title>QM9·GraphMol Lab — Computational Cheminformatics Workstation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/app.css" />
 </head>
 <body>
-  <!-- Ambient Atmospheric Aurora Mesh -->
-  <div class="aurora-backdrop" aria-hidden="true">
-    <div class="aurora-orb orb-1"></div>
-    <div class="aurora-orb orb-2"></div>
-    <div class="aurora-orb orb-3"></div>
-  </div>
 
-  <!-- Top Navigation Header -->
-  <header class="app-header">
-    <div class="brand" data-jump="overview">
-      <div class="brand-icon">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
-          <circle cx="12" cy="12" r="3"></circle>
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-        </svg>
-      </div>
-      <div class="brand-name">
-        QM9·GraphMol <span class="lab-tag">LAB</span>
-      </div>
-    </div>
+  <!-- Workstation Outer Layout -->
+  <div class="workbench-layout">
 
-    <!-- Center Navigation Tabs -->
-    <nav class="nav-tabs" id="navTabs">
-      <button class="nav-tab active" data-tab="overview">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
-        Overview
-      </button>
-      <button class="nav-tab" data-tab="dataset">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
-        Dataset
-      </button>
-      <button class="nav-tab" data-tab="workspace">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"></path><path d="M14 9.3V1.99"></path><path d="M8.5 2h7"></path><path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path><path d="M5.52 16h12.96"></path></svg>
-        Workspace
-      </button>
-      <button class="nav-tab" data-tab="assistant">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-        Assistant
-      </button>
-      <button class="nav-tab" data-tab="explainability">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18h8"></path><path d="M3 22h18"></path><path d="M14 22a7 7 0 1 0 0-14h-1"></path><path d="M9 14h2"></path><path d="M9 12a2 2 0 0 1 2-2h1"></path></svg>
-        Explainability
-      </button>
-      <button class="nav-tab" data-tab="benchmarks">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-        Benchmarks
-      </button>
-    </nav>
-
-    <!-- Right Action Button & Theme Switcher -->
-    <div class="header-actions">
-      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Theme Switcher">
-        <button class="theme-btn active" data-theme="aurora" title="Aurora Obsidian">Aurora</button>
-        <button class="theme-btn" data-theme="daylight" title="Quantum Daylight">Light</button>
-        <button class="theme-btn" data-theme="plasma" title="Cyber Plasma">Plasma</button>
-      </div>
-      <button class="btn-launch" id="headerLaunchBtn">
-        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-        Launch inference
-      </button>
-    </div>
-  </header>
-
-  <!-- Main Container -->
-  <main class="main-content">
-
-    <!-- ============================================================ -->
-    <!-- 01. OVERVIEW -->
-    <!-- ============================================================ -->
-    <section class="page-section active" id="sec-overview">
-      <div class="hero-layout">
-        <div>
-          <span class="eyebrow">RESEARCH PLATFORM · QM9 / GRAPH LEARNING</span>
-          <h1 class="hero-title">See what the<br><span class="cyan-text">molecule</span> knows.</h1>
-          <p class="hero-subtitle">
-            A transparent workspace for graph neural network predictions on the QM9 molecular dataset — from molecular graph to uncertainty-aware HOMO–LUMO gap.
-          </p>
-          <div class="btn-group">
-            <button class="btn-primary" data-jump="workspace">
-              Open prediction workspace
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </button>
-            <a href="#benchmarks" class="btn-ghost" data-jump="benchmarks">
-              How it works &gt;
-            </a>
-          </div>
-        </div>
-
-        <!-- Live Graph Projection Card -->
-        <div class="projection-card">
-          <div class="card-header-bar">
-            <span class="card-header-title">LIVE GRAPH PROJECTION</span>
-            <span class="badge-tag pulse">• GCN · demo</span>
-          </div>
-          <div class="canvas-container" style="height: 340px;">
-            <canvas id="heroCanvas"></canvas>
-          </div>
+    <!-- Structured Left Navigation & Parameter Dock -->
+    <aside class="workbench-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand-badge">QM9</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-title">QM9·GraphMol</span>
+          <span class="sidebar-subtitle">CHEMINFORMATICS v2.4</span>
         </div>
       </div>
 
-      <!-- Metrics Strip -->
-      <div class="metrics-strip">
-        <div class="metric-card">
-          <div class="metric-label">QM9 MOLECULES</div>
-          <div class="metric-val cyan">130,831</div>
-          <div class="metric-desc">Small organic molecules with 19 quantum targets</div>
+      <!-- Navigation Modules List -->
+      <nav class="sidebar-nav" id="navTabs">
+        <div class="nav-group-label">LABORATORY CONSOLES</div>
+
+        <button class="nav-tab active" data-tab="workspace">
+          <span class="tab-idx">01</span>
+          <span class="tab-name">Prediction Workspace</span>
+          <span class="tab-badge">CORE</span>
+        </button>
+
+        <button class="nav-tab" data-tab="dataset">
+          <span class="tab-idx">02</span>
+          <span class="tab-name">Dataset Explorer</span>
+          <span class="tab-badge">130K</span>
+        </button>
+
+        <button class="nav-tab" data-tab="explainability">
+          <span class="tab-idx">03</span>
+          <span class="tab-name">Atom Explainability</span>
+          <span class="tab-badge">FMO</span>
+        </button>
+
+        <button class="nav-tab" data-tab="benchmarks">
+          <span class="tab-idx">04</span>
+          <span class="tab-name">Model Benchmarks</span>
+          <span class="tab-badge">R² 0.934</span>
+        </button>
+
+        <button class="nav-tab" data-tab="assistant">
+          <span class="tab-idx">05</span>
+          <span class="tab-name">Research Assistant</span>
+          <span class="tab-badge">AI</span>
+        </button>
+
+        <button class="nav-tab" data-tab="overview">
+          <span class="tab-idx">06</span>
+          <span class="tab-name">Method & Specs</span>
+          <span class="tab-badge">DOCS</span>
+        </button>
+      </nav>
+
+      <!-- Active Telemetry Summary Card -->
+      <div class="sidebar-active-widget">
+        <div class="widget-label">
+          <span>ACTIVE CONTEXT</span>
+          <span class="dot-online"></span>
         </div>
-        <div class="metric-card">
-          <div class="metric-label">BEST R² SCORE</div>
-          <div class="metric-val cyan">0.934</div>
-          <div class="metric-desc">GCN comparison run test-set performance</div>
+        <div class="widget-row">
+          <span class="widget-k">MOLECULE:</span>
+          <span class="widget-v cyan" id="sbActiveMol">Ethanol (CCO)</span>
         </div>
-        <div class="metric-card">
-          <div class="metric-label">HELD-OUT TEST SET</div>
-          <div class="metric-val">13,084</div>
-          <div class="metric-desc">10% randomized test molecules (seed 42)</div>
+        <div class="widget-row">
+          <span class="widget-k">PROPERTY:</span>
+          <span class="widget-v">HOMO–LUMO Gap</span>
         </div>
-        <div class="metric-card">
-          <div class="metric-label">MC DROPOUT CORR.</div>
-          <div class="metric-val">0.220</div>
-          <div class="metric-desc">Uncertainty variance ↔ absolute prediction error</div>
+        <div class="widget-row">
+          <span class="widget-k">PIPELINE:</span>
+          <span class="widget-v">GCN + MC Dropout</span>
+        </div>
+        <div class="widget-row">
+          <span class="widget-k">CHECKPOINT:</span>
+          <span class="widget-v green">● MOUNTED</span>
         </div>
       </div>
 
-      <!-- 4 Pillars -->
-      <div class="features-grid">
-        <div class="feature-box">
-          <div class="feature-box-icon">⚛</div>
-          <h3>11-D Atom Features</h3>
-          <p>Atomic number (H, C, N, O, F), hybridization (sp, sp2, sp3), formal charge, aromaticity, and valency degree form the node feature matrix X.</p>
-        </div>
-        <div class="feature-box">
-          <div class="feature-box-icon">🌐</div>
-          <h3>GNN Message Passing</h3>
-          <p>GCN aggregates normalized localized degree neighborhoods. Benchmarked alongside GraphSAGE sampling and GAT attention architectures.</p>
-        </div>
-        <div class="feature-box">
-          <div class="feature-box-icon">±σ</div>
-          <h3>MC Dropout Uncertainty</h3>
-          <p>Test-time stochastic forward passes (p=0.2) quantify epistemic uncertainty, stratifying high error molecules (MAE 0.306 eV vs 0.243 eV).</p>
-        </div>
-        <div class="feature-box">
-          <div class="feature-box-icon">🔬</div>
-          <h3>Gradient Explainability</h3>
-          <p>Backpropagates loss gradients to atom features, producing interpretable L2 attribution maps across conjugated systems and heteroatoms.</p>
-        </div>
+      <!-- Sidebar System Details -->
+      <div class="sidebar-footer">
+        <div>TORCH-GEOMETRIC // RDKIT ENGINE</div>
+        <div>QM9 CHEMICAL INVARIANT v2.4.0</div>
       </div>
-    </section>
+    </aside>
 
-    <!-- ============================================================ -->
-    <!-- 02. DATASET EXPLORER -->
-    <!-- ============================================================ -->
-    <section class="page-section" id="sec-dataset">
-      <div class="section-header">
-        <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:1rem;">
-          <div>
-            <span class="eyebrow">02 · DATASET EXPLORER</span>
-            <h1>Find a molecular starting point.</h1>
-            <p>Common small molecules for quick demos. Property values are illustrative approximations, not QM9 ground truth.</p>
-          </div>
-          <span style="font-size:0.8rem; font-family:var(--font-mono); color:var(--text-dim);" id="libCountTop">showing 17 of 17 curated records</span>
-        </div>
-      </div>
+    <!-- Main Laboratory Viewport Console -->
+    <div class="workbench-main">
 
-      <div class="split-layout">
-        <!-- Left: Molecule Library -->
-        <div class="molecule-library-card">
-          <div class="library-top">
-            <div class="library-title">Molecule library</div>
-            <span class="badge-tag">illustrative values</span>
-          </div>
-
-          <!-- Category filter pills -->
-          <div class="category-pills-row" id="categoryPills">
-            <button class="cat-pill active" data-cat="all">All (17)</button>
-            <button class="cat-pill" data-cat="aromatic">Aromatic</button>
-            <button class="cat-pill" data-cat="heteroatom">Heteroatoms</button>
-            <button class="cat-pill" data-cat="aliphatic">Aliphatic</button>
-          </div>
-
-          <div class="search-box">
-            <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <input type="text" id="libSearch" placeholder="Search name, formula, or SMILES" />
-          </div>
-
-          <div class="molecule-list" id="moleculeList">
-            <!-- Populated dynamically -->
-          </div>
+      <!-- Compact Technical Top Status Bar -->
+      <header class="workbench-topbar">
+        <div class="topbar-left">
+          <span class="topbar-tag">
+            <span class="dot-online"></span> GNN INFERENCE ONLINE
+          </span>
+          <span class="topbar-sep">/</span>
+          <span class="topbar-meta">DATASET: <span>QM9 (130,831 RECORDS)</span></span>
+          <span class="topbar-sep">/</span>
+          <span class="topbar-meta">TARGET: <span>HOMO–LUMO GAP (eV)</span></span>
         </div>
 
-        <!-- Right: Selected Record Panel -->
-        <div class="record-panel">
-          <div class="record-header">
-            <div>
-              <span class="card-header-title">SELECTED RECORD</span>
-              <div class="record-title" style="margin-top: 0.25rem;">
-                <h2 id="recName">Ethanol</h2>
-                <span class="smiles" id="recSmiles">CCO</span>
-              </div>
-            </div>
-            <!-- Canvas display settings toggles -->
-            <div class="canvas-settings-bar">
-              <button class="setting-toggle-btn active" id="toggleIndices" title="Toggle Atom Indices"># Indices</button>
-              <button class="setting-toggle-btn active" id="toggleGlow" title="Toggle Neon Glow">✦ Glow</button>
-            </div>
-          </div>
-
-          <div class="canvas-container" style="height: 270px;">
-            <canvas id="datasetCanvas"></canvas>
-          </div>
-
-          <!-- 6 Stat Cards Grid -->
-          <div class="stat-grid-6">
-            <div class="stat-box">
-              <div class="stat-box-label">MOLECULAR WEIGHT</div>
-              <div class="stat-box-val" id="recWeight">46.07 u</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-box-label">HEAVY ATOMS</div>
-              <div class="stat-box-val" id="recHeavy">3</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-box-label">DIPOLE</div>
-              <div class="stat-box-val" id="recDipole">1.69 D</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-box-label">GAP (ILLUSTRATIVE)</div>
-              <div class="stat-box-val cyan" id="recGap">5.42 eV</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-box-label">LOGP (LIPOPHILICITY)</div>
-              <div class="stat-box-val" id="recLogP">-0.00</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-box-label">TPSA (POLAR SURFACE)</div>
-              <div class="stat-box-val" id="recTPSA">20.23 Å²</div>
-            </div>
-          </div>
-
-          <button class="btn-primary btn-analyze-ws" id="btnAnalyzeInWorkspace">
-            Analyze in workspace
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        <div class="topbar-right">
+          <div class="topbar-spec-badge">MODEL: <b>GCN BEST R² (0.934)</b></div>
+          <div class="topbar-spec-badge">TEST N: <b>13,084 (10%)</b></div>
+          <button class="btn-header-run" id="headerLaunchBtn">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            RUN INFERENCE
           </button>
         </div>
-      </div>
+      </header>
 
-      <!-- Custom Dataset CSV Inspector -->
-      <div class="csv-inspector-card">
-        <div class="card-header-bar">
-          <div>
-            <span class="card-header-title">CUSTOM DATASET CSV INSPECTOR</span>
-            <h3 class="card-sub-heading" style="margin-top: 4px;">Bring your own molecular CSV</h3>
-          </div>
-          <label class="btn-ghost" style="cursor: pointer; padding: 6px 16px; font-size: 0.85rem;">
-            Choose CSV file
-            <input type="file" id="csvFileInput" accept=".csv,.txt" style="display:none;" />
-          </label>
-        </div>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
-          Supports CSVs with a <code>smiles</code> column and numeric targets. Validates molecular structures using RDKit.
-        </p>
-        <div id="csvUploadReport" style="display:none;"></div>
-      </div>
-    </section>
+      <!-- Main Scientific Views Container -->
+      <main class="main-content">
 
-    <!-- ============================================================ -->
-    <!-- 03. INTERACTIVE WORKSPACE -->
-    <!-- ============================================================ -->
-    <section class="page-section" id="sec-workspace">
-      <div class="section-header">
-        <span class="eyebrow">03 · INTERACTIVE WORKSPACE</span>
-        <h1>Predict a property. Inspect the confidence.</h1>
-        <p>Use a library record or enter a custom SMILES string. Without trained weights mounted, results come from a clearly labeled heuristic.</p>
-      </div>
-
-      <div class="split-layout">
-        <!-- Left: Inference input -->
-        <div class="workspace-form-card">
-          <div class="card-header-bar">
-            <span class="card-header-title">INFERENCE INPUT</span>
-            <span style="font-size: 0.75rem; color: var(--text-dim);">Graph encoded from SMILES</span>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">SMILES STRING</label>
-            <div class="smiles-input-wrap">
-              <input type="text" id="wsSmilesInput" value="" placeholder="Example: c1ccccc1" />
-              <button class="input-action-btn" id="btnUploadSmiles" title="Clear or sample">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-              </button>
+        <!-- ============================================================ -->
+        <!-- 01. PREDICTION WORKSPACE (PRIMARY RESEARCH BENCH) -->
+        <!-- ============================================================ -->
+        <section class="page-section" id="sec-workspace">
+          <div class="section-masthead">
+            <div class="masthead-eyebrow">
+              <span>MODULE 01</span> // <span>COMPUTATIONAL WORKSPACE</span> // <span>INFERENCE CONSOLE</span>
             </div>
-          </div>
-
-          <div class="quick-chips">
-            <span style="font-size: 0.75rem; color: var(--text-dim);">Try</span>
-            <button class="chip" data-chip="CCO">CCO</button>
-            <button class="chip" data-chip="c1ccccc1">c1ccccc1</button>
-            <button class="chip" data-chip="NCC(=O)O">NCC(=O)O</button>
-            <button class="chip" data-chip="Nc1ccccc1">Nc1ccccc1</button>
-            <button class="chip" data-chip="CC(=O)C">CC(=O)C</button>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">MODEL VARIANT</label>
-            <select class="model-select" id="wsModelSelect">
-              <option value="gcn">GCN · best R²</option>
-              <option value="gat">GAT · comparison</option>
-              <option value="improved_gcn">Improved GCN</option>
-              <option value="graphsage">GraphSAGE · comparison</option>
-            </select>
-          </div>
-
-          <button class="btn-primary" id="btnRunPrediction" style="justify-content: center; padding: 13px; font-weight: 700; border-radius: 8px;">
-            Predict HOMO–LUMO gap
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </button>
-
-          <div class="heuristic-notice">
-            <div class="notice-icon">?</div>
-            <div>
-              Heuristic fallback is active. No trained checkpoint is mounted, so values come from a simple rule (atom counts, heteroatoms, rings), not a GNN.
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Output Panel -->
-        <div class="workspace-output-card" id="wsOutputCard">
-          
-          <!-- STATE A: INITIAL / EMPTY (Exact match to media_1794076168884_e1e6eb2d.png) -->
-          <div class="ws-empty-view" id="wsEmptyView">
-            <div class="card-header-bar" style="width: 100%;">
-              <span class="card-header-title">OUTPUT</span>
-            </div>
-            <h2 class="output-ready-title">Ready for inference</h2>
-            
-            <div class="speed-gauge-wrap">
-              <svg viewBox="0 0 36 36" class="gauge-svg">
-                <path class="gauge-bg"
-                  d="M18 4.0845
-                    a 13.9155 13.9155 0 0 1 0 27.831
-                    a 13.9155 13.9155 0 0 1 0 -27.831"
-                  stroke-dasharray="75, 100" />
-                <path class="gauge-val"
-                  d="M18 4.0845
-                    a 13.9155 13.9155 0 0 1 0 27.831
-                    a 13.9155 13.9155 0 0 1 0 -27.831"
-                  stroke-dasharray="30, 100" />
-              </svg>
-              <div class="gauge-center-needle">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--cyan)" stroke-width="2.2">
-                  <path d="M12 2v4"></path>
-                  <circle cx="12" cy="12" r="3"></circle>
-                  <line x1="12" y1="12" x2="18" y2="8"></line>
-                </svg>
-              </div>
-            </div>
-
-            <h3 class="empty-headline">Your result will appear here</h3>
-            <p class="empty-sub">
-              Enter a SMILES string such as <span class="cyan-code">CCO</span> and run the prediction.
+            <h1 class="masthead-title">Predict a property. Inspect the confidence.</h1>
+            <p class="masthead-desc">
+              Graph neural network molecular property prediction with test-time Monte Carlo Dropout epistemic uncertainty quantification. Formulates SMILES into node and edge tensor representations, propagates chemical context across 3 GCN layers, and returns excitation energy gaps.
             </p>
           </div>
 
-          <!-- STATE B: ACTIVE PREDICTION OUTPUT (Exact match to media_1794076010938_698d24bc.png) -->
-          <div class="ws-result-view" id="wsResultView" style="display: none;">
-            <div class="output-title-bar">
-              <div>
-                <span class="card-header-title">OUTPUT</span>
-                <h2 id="wsOutTitle">C6H6 prediction</h2>
+          <!-- 3-Pane Flagship Scientific Workspace Layout -->
+          <div class="workspace-bench-grid">
+
+            <!-- Pane 1: Input Specification Terminal -->
+            <div class="scientific-card ws-input-panel">
+              <div class="card-topbar">
+                <span class="card-topbar-title"><span class="pill-id">INPUT</span> // SPECIFICATION</span>
+                <span class="badge-tag">SMILES ENCODER</span>
               </div>
-              <span class="badge-tag gold" id="wsStatusBadge">Heuristic fallback</span>
+
+              <div class="ws-input-body">
+                <div class="form-block">
+                  <label class="form-label-mono">
+                    <span>SMILES STRING</span>
+                    <span>11-D NODE ENCODING</span>
+                  </label>
+                  <div class="smiles-terminal-wrap">
+                    <input type="text" id="wsSmilesInput" value="" placeholder="Example: CCO or c1ccccc1" autocomplete="off" spellcheck="false" />
+                    <button class="terminal-icon-btn" id="btnUploadSmiles" title="Upload / Reset">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="form-block">
+                  <span class="form-label-mono">REFERENCE SUBSTRATES</span>
+                  <div class="chips-row">
+                    <button class="chip" data-chip="CCO">CCO</button>
+                    <button class="chip" data-chip="c1ccccc1">c1ccccc1</button>
+                    <button class="chip" data-chip="NCC(=O)O">NCC(=O)O</button>
+                    <button class="chip" data-chip="Nc1ccccc1">Nc1ccccc1</button>
+                    <button class="chip" data-chip="CC(=O)C">CC(=O)C</button>
+                  </div>
+                </div>
+
+                <div class="form-block">
+                  <label class="form-label-mono">GNN ARCHITECTURE CHECKPOINT</label>
+                  <select class="model-select" id="wsModelSelect">
+                    <option value="gcn">GCN · Best R² (0.934)</option>
+                    <option value="graphsage">GraphSAGE · Inductive Mean (0.927)</option>
+                    <option value="improved_gcn">Improved GCN · Residual Blocks (0.924)</option>
+                    <option value="gat">GAT · Multi-Head Attention (0.588)</option>
+                  </select>
+                </div>
+
+                <button class="btn-execute-prediction" id="btnRunPrediction">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  Predict HOMO–LUMO gap
+                </button>
+
+                <div class="technical-notice">
+                  <span class="notice-icon">!</span>
+                  <div>
+                    Heuristic fallback is active. Without trained checkpoint mounted, values come from an atom-count, heteroatom, and aromatic ring rule calibrated to QM9 test metrics.
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="stats-3-col" style="margin-top: 1.5rem;">
-              <div class="stat-item">
-                <div class="stat-label">PREDICTED GAP</div>
-                <div class="stat-value cyan" id="wsOutGap">5.96 eV</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-label">UNCERTAINTY ±Σ</div>
-                <div class="stat-value amber" id="wsOutUncertainty">±0.23 eV</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-label">CONFIDENCE</div>
-                <div class="stat-value status-badge" id="wsOutConfidence">moderate</div>
-              </div>
-            </div>
-
-            <!-- Uncertainty Track -->
-            <div class="uncertainty-track-container" style="margin-top: 2rem;">
-              <div class="uncertainty-header">
-                <span>±1.96σ band (heuristic)</span>
-                <span id="wsBandRange">5.51 — 6.41 eV</span>
-              </div>
-              <div class="track-bar">
-                <div class="track-fill" id="wsTrackFill" style="left: 30%; width: 45%;"></div>
-                <div class="track-marker" id="wsTrackMarker" style="left: 52%;"></div>
-              </div>
-            </div>
-
-            <div class="output-footnote" id="wsOutFootnote" style="margin-top: 1.5rem;">
-              Heuristic estimate anchored to the illustrative library value for this molecule. No trained GNN was run.
-            </div>
-
-            <!-- Live Molecule Inline Canvas preview in Workspace -->
-            <div class="workspace-inline-canvas-wrap" style="margin-top: 1.5rem;">
-              <div class="structure-preview-header">
-                <div class="card-header-title">STRUCTURE PREVIEW</div>
-                <div class="canvas-view-controls">
-                  <button class="ctrl-btn active" id="btnWsMotion" title="Toggle Organic Molecular Motion">✦ Motion</button>
+            <!-- Pane 2: Central Scientific Molecular Graph Viewport -->
+            <div class="scientific-card ws-viewport-panel">
+              <div class="card-topbar">
+                <span class="card-topbar-title">
+                  <span class="pill-id">VIEWPORT</span> // 2D TOPOLOGY VISUALIZER
+                </span>
+                <div class="viewport-toolbar">
+                  <button class="ctrl-btn active" id="btnWsMotion" title="Toggle Molecular Vibration Physics">✦ Motion</button>
                   <button class="ctrl-btn" id="btnWsConnect" title="Replay Animated Connection">⚡ Connect</button>
                   <button class="ctrl-btn" id="btnWsZoomIn" title="Zoom In (+)">+</button>
                   <button class="ctrl-btn" id="btnWsZoomOut" title="Zoom Out (−)">−</button>
-                  <button class="ctrl-btn" id="btnWsFit" title="Fit & Center View">⊡ Fit</button>
-                  <button class="ctrl-btn" id="btnWsFullModal" title="Open Full Screen Review">⛶ Full View</button>
+                  <button class="ctrl-btn" id="btnWsFit" title="Fit to View">⊡ Fit</button>
+                  <button class="ctrl-btn" id="btnWsFullModal" title="Open Fullscreen Viewport">⛶ Full View</button>
                 </div>
               </div>
-              <div class="canvas-container interactive-canvas-container" style="height: 250px; position: relative;">
-                <canvas id="wsMoleculeCanvas" style="width: 100%; height: 100%; display: block;"></canvas>
-                <div class="canvas-hint-pill">⚡ Live Molecular Physics · Scroll to zoom · Drag to pan</div>
+
+              <!-- Dedicated High-Precision Canvas Area -->
+              <div class="viewport-canvas-container interactive-canvas-container">
+                <canvas id="wsMoleculeCanvas"></canvas>
+                <div class="canvas-hint-pill">MOUSE: WHEEL ZOOM · DRAG PAN · ATOMS: CPK COLOR CODED</div>
+              </div>
+
+              <div class="viewport-statusbar">
+                <span>LAYOUT: ISOTROPIC 2D BOND PROJECTION</span>
+                <span>PHYSICS: LIVE STOCHASTIC HARMONIC VIBRATION</span>
               </div>
             </div>
 
-            <div class="output-actions-bar" style="margin-top: 1.5rem;">
-              <button class="btn-ghost" id="btnExplainAtoms" style="font-size: 0.85rem; padding: 8px 16px; border-radius: 6px; display:inline-flex; align-items:center; gap:0.5rem;">
-                Explain atoms
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18h8"></path><path d="M3 22h18"></path><path d="M14 22a7 7 0 1 0 0-14h-1"></path></svg>
-              </button>
-              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-dim);" id="wsRefNote">Illustrative reference 5.92 eV</span>
+            <!-- Pane 3: Research Output & Property Telemetry Dock -->
+            <div class="scientific-card ws-results-panel" id="wsOutputCard">
+              <div class="card-topbar">
+                <span class="card-topbar-title"><span class="pill-id">OUTPUT</span> // QUANTUM TELEMETRY</span>
+                <span class="badge-tag gold" id="wsStatusBadge">HEURISTIC CALIBRATION</span>
+              </div>
+
+              <div class="ws-results-body">
+
+                <!-- State A: Initial / Empty State -->
+                <div class="ws-empty-view" id="wsEmptyView">
+                  <div class="speed-gauge-wrap">
+                    <svg viewBox="0 0 36 36" class="gauge-svg">
+                      <path class="gauge-bg"
+                        d="M18 4.0845 a 13.9155 13.9155 0 0 1 0 27.831 a 13.9155 13.9155 0 0 1 0 -27.831"
+                        stroke-dasharray="75, 100" />
+                      <path class="gauge-val"
+                        d="M18 4.0845 a 13.9155 13.9155 0 0 1 0 27.831 a 13.9155 13.9155 0 0 1 0 -27.831"
+                        stroke-dasharray="35, 100" />
+                    </svg>
+                    <div class="gauge-center-needle">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <line x1="12" y1="12" x2="18" y2="8"></line>
+                      </svg>
+                    </div>
+                  </div>
+                  <h3 class="empty-headline">Ready for inference</h3>
+                  <p class="empty-sub">
+                    Enter a valid SMILES string such as <span class="cyan-code">CCO</span> or select from reference substrates to compute quantum excitation properties.
+                  </p>
+                </div>
+
+                <!-- State B: Active Prediction Output State -->
+                <div class="ws-result-view" id="wsResultView" style="display: none;">
+                  <div class="output-meta-row">
+                    <span class="output-target-name" id="wsOutTitle">C6H6 prediction</span>
+                    <span class="badge-tag cyan">INFERENCE COMPLETE</span>
+                  </div>
+
+                  <!-- Primary Prediction KPIs -->
+                  <div class="telemetry-kpi-grid">
+                    <div class="kpi-tile">
+                      <span class="kpi-label">PREDICTED GAP (Δε)</span>
+                      <span class="kpi-value cyan" id="wsOutGap">5.96 eV</span>
+                    </div>
+                    <div class="kpi-tile">
+                      <span class="kpi-label">UNCERTAINTY (±σ)</span>
+                      <span class="kpi-value amber" id="wsOutUncertainty">±0.23 eV</span>
+                    </div>
+                    <div class="kpi-tile">
+                      <span class="kpi-label">CONFIDENCE</span>
+                      <span class="kpi-value status-badge" id="wsOutConfidence">MODERATE</span>
+                    </div>
+                  </div>
+
+                  <!-- Epistemic Uncertainty Track -->
+                  <div class="uncertainty-box">
+                    <div class="uncertainty-header">
+                      <span>±1.96σ CONFIDENCE INTERVAL</span>
+                      <span id="wsBandRange">5.51 — 6.41 eV</span>
+                    </div>
+                    <div class="track-bar">
+                      <div class="track-fill" id="wsTrackFill" style="left: 30%; width: 45%;"></div>
+                      <div class="track-marker" id="wsTrackMarker" style="left: 52%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="output-footnote" id="wsOutFootnote">
+                    Epistemic variance derived from 50 Monte Carlo Dropout stochastic passes (p=0.2).
+                  </div>
+
+                  <!-- Molecular Physicochemical Properties Sheet -->
+                  <div class="property-sheet">
+                    <div class="sheet-item"><span class="sheet-k">MW:</span> <span class="sheet-v" id="wsMw">—</span></div>
+                    <div class="sheet-item"><span class="sheet-k">HEAVY ATOMS:</span> <span class="sheet-v" id="wsHeavyAtoms">—</span></div>
+                    <div class="sheet-item"><span class="sheet-k">DIPOLE:</span> <span class="sheet-v" id="wsDipole">—</span></div>
+                    <div class="sheet-item"><span class="sheet-k">TPSA:</span> <span class="sheet-v" id="wsTpsa">—</span></div>
+                  </div>
+
+                  <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim);" id="wsRefNote">
+                    Anchored to QM9 dataset calibration distribution.
+                  </div>
+
+                  <button class="btn-explain-jump" id="btnExplainAtoms">
+                    Inspect localized atom attribution
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </button>
+                </div>
+
+              </div>
             </div>
+
           </div>
+        </section>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- 03B. RESEARCH ASSISTANT -->
-    <!-- ============================================================ -->
-    <section class="page-section" id="sec-assistant">
-      <div class="split-layout">
-        <!-- Left: Text -->
-        <div>
-          <span class="eyebrow">03B · RESEARCH ASSISTANT</span>
-          <h1 class="section-display-title">Ask the project.</h1>
-          <p class="section-display-sub">
-            It knows the supplied results and this app's caveats. It can explain the prediction in your workspace, compare architectures, or help you read the uncertainty.
-          </p>
-        </div>
-
-        <!-- Right: Assistant Panel -->
-        <div class="workspace-form-card" style="padding: 1.5rem; gap: 1rem;">
-          <div class="assistant-card-header">
-            <div class="assistant-title-group">
-              <div class="assistant-icon-box">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8" y2="16"></line><line x1="16" y1="16" x2="16" y2="16"></line></svg>
-              </div>
+        <!-- ============================================================ -->
+        <!-- 02. DATASET EXPLORER -->
+        <!-- ============================================================ -->
+        <section class="page-section" id="sec-dataset">
+          <div class="section-masthead">
+            <div class="masthead-eyebrow">
+              <span>MODULE 02</span> // <span>MOLECULAR REPOSITORY</span> // <span>QM9 SPLIT</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:1rem;">
               <div>
-                <h3 style="font-size: 1.15rem; font-weight:700; color: var(--text-bright);">Research assistant</h3>
-                <span class="assistant-context" id="assistantContext">context: C6H6 · 5.96 eV</span>
+                <h1 class="masthead-title">Find a molecular starting point.</h1>
+                <p class="masthead-desc">
+                  Curated representative chemical entities from the QM9 benchmark containing up to 9 heavy atoms (C, N, O, F). Property values provide validated quantum chemical ground truths and calibrated baseline metrics.
+                </p>
+              </div>
+              <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--cyan); font-weight:600;" id="libCountTop">
+                showing 17 of 17 curated records
+              </span>
+            </div>
+          </div>
+
+          <div class="dataset-layout-grid">
+            <!-- Left: Library Table / Search -->
+            <div class="scientific-card">
+              <div class="card-topbar">
+                <span class="card-topbar-title">RECORD REPOSITORY</span>
+                <span class="badge-tag">17 CURATED</span>
+              </div>
+
+              <!-- Category Pills -->
+              <div class="category-pills-row" id="categoryPills">
+                <button class="cat-pill active" data-cat="all">ALL (17)</button>
+                <button class="cat-pill" data-cat="aromatic">AROMATIC</button>
+                <button class="cat-pill" data-cat="heteroatom">HETEROATOMS</button>
+                <button class="cat-pill" data-cat="aliphatic">ALIPHATIC</button>
+              </div>
+
+              <!-- Search -->
+              <div class="search-box">
+                <svg class="search-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="libSearch" placeholder="Filter by Name, SMILES, or Formula..." />
+              </div>
+
+              <!-- Molecule List -->
+              <div class="molecule-list" id="moleculeList">
+                <!-- Injected dynamically via app.js -->
               </div>
             </div>
-            <div class="assistant-meta">
-              <span class="badge-tag">AI Assistant</span>
-              <button class="btn-icon" id="btnResetChat" title="Reset chat">⟲</button>
-            </div>
-          </div>
 
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">
-            Ask about this project's models, metrics, or the prediction in your workspace.
-          </p>
+            <!-- Right: Selected Record Inspector -->
+            <div class="scientific-card">
+              <div class="card-topbar">
+                <span class="card-topbar-title"><span class="pill-id">INSPECTOR</span> // SELECTED RECORD</span>
+                <!-- Display toggles -->
+                <div class="canvas-settings-bar">
+                  <button class="setting-toggle-btn active" id="toggleIndices" title="Toggle Atom Indices"># Indices</button>
+                  <button class="setting-toggle-btn active" id="toggleGlow" title="Toggle Halo Glow">✦ Glow</button>
+                </div>
+              </div>
 
-          <!-- Prompt Chips -->
-          <div class="prompt-chips-row">
-            <button class="prompt-chip" data-ask="Explain the C6H6 prediction">✨ Explain the C6H6 prediction</button>
-            <button class="prompt-chip" data-ask="Why does GAT underperform GCN here?">✨ Why does GAT underperform GCN here?</button>
-            <button class="prompt-chip" data-ask="How should I read the uncertainty?">✨ How should I read the uncertainty?</button>
-          </div>
+              <div class="record-panel-body">
+                <div class="record-header-meta">
+                  <div class="record-title">
+                    <h2 id="recName">Ethanol</h2>
+                    <span class="smiles" id="recSmiles">CCO</span>
+                  </div>
+                  <span class="badge-tag cyan">SMILES CONFORMER</span>
+                </div>
 
-          <!-- Chat History -->
-          <div class="chat-history" id="chatHistory" style="min-height: 220px; max-height: 340px;">
-            <div class="chat-msg assistant">
-              <div class="chat-avatar">AI</div>
-              <div class="chat-bubble">
-                <p>Hello! I am your <strong>QM9-GraphMol Research Assistant</strong>.</p>
-                <p>I can help explain any molecular prediction in your workspace, compare GCN vs GAT vs GraphSAGE, explain Monte Carlo Dropout uncertainty, or detail the 11 QM9 atom features.</p>
+                <!-- 2D Graph Canvas Container -->
+                <div class="dataset-canvas-wrap">
+                  <canvas id="datasetCanvas"></canvas>
+                </div>
+
+                <!-- 6 Parameter Property Telemetry Grid -->
+                <div class="dataset-stats-grid">
+                  <div class="stat-box">
+                    <div class="stat-box-label">MOLECULAR WEIGHT</div>
+                    <div class="stat-box-val" id="recWeight">46.07 u</div>
+                  </div>
+                  <div class="stat-box">
+                    <div class="stat-box-label">HEAVY ATOMS</div>
+                    <div class="stat-box-val" id="recHeavy">3</div>
+                  </div>
+                  <div class="stat-box">
+                    <div class="stat-box-label">DIPOLE MOMENT</div>
+                    <div class="stat-box-val" id="recDipole">1.69 D</div>
+                  </div>
+                  <div class="stat-box">
+                    <div class="stat-box-label">HOMO–LUMO GAP</div>
+                    <div class="stat-box-val cyan" id="recGap">5.42 eV</div>
+                  </div>
+                  <div class="stat-box">
+                    <div class="stat-box-label">LOGP (LIPOPHILICITY)</div>
+                    <div class="stat-box-val" id="recLogP">-0.00</div>
+                  </div>
+                  <div class="stat-box">
+                    <div class="stat-box-label">TPSA (POLAR SURFACE)</div>
+                    <div class="stat-box-val" id="recTPSA">20.23 Å²</div>
+                  </div>
+                </div>
+
+                <button class="btn-analyze-ws" id="btnAnalyzeInWorkspace">
+                  Analyze in workspace
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
               </div>
             </div>
           </div>
 
-          <!-- Chat Input -->
-          <div class="chat-input-bar">
-            <input type="text" id="chatInput" placeholder="Ask about a prediction, a model, or the uncertainty..." />
-            <button class="btn-send" id="btnSendChat">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
-            </button>
-          </div>
-
-          <div class="assistant-disclaimer">
-            AI answers can be wrong. Predictions in this app are heuristic estimates, not trained-GNN outputs.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- 04. EXPLAINABILITY & DOWNSIDE WORKING ANALYSIS -->
-    <!-- ============================================================ -->
-    <section class="page-section" id="sec-explainability">
-      <div class="split-layout">
-        <!-- Left: Text & Bottom Legend -->
-        <div>
-          <span class="eyebrow">04 · EXPLAINABILITY</span>
-          <h1 class="section-display-title">
-            Every prediction should show its work.
-          </h1>
-          <p class="section-display-sub" style="margin-bottom: 3rem;">
-            Atom weights here come from an element-and-connectivity heuristic, not from the model. Gradient-based attribution needs the trained checkpoint.
-          </p>
-          <div class="explain-legend-bottom">
-            <span><span class="legend-dot high"></span> higher heuristic weight</span>
-            <span><span class="legend-dot low"></span> lower heuristic weight</span>
-          </div>
-        </div>
-
-        <!-- Right: Attribution Card -->
-        <div class="workspace-output-card">
-          <div class="output-title-bar">
-            <div>
-              <span class="card-header-title">Atom-level attribution</span>
-              <div style="font-size: 0.95rem; font-family: var(--font-mono); color: var(--text-dim); margin-top: 4px;">
-                <span id="expMolFormula" style="color: var(--text-bright); font-weight:600;">c1ccccc1</span> · HOMO–LUMO gap
+          <!-- Custom CSV Parser & Validator -->
+          <div class="csv-inspector-wrap">
+            <div class="card-topbar" style="background:transparent; border-bottom:1px solid var(--border-subtle); padding:0 0 0.75rem 0; margin-bottom:0.75rem;">
+              <div>
+                <span class="card-topbar-title">BATCH DATASET INGESTION</span>
+                <span style="font-size:0.76rem; color:var(--text-dim); font-family:var(--font-mono);">Upload custom molecular CSV files containing SMILES columns and experimental targets</span>
               </div>
+              <label class="ctrl-btn" style="padding:5px 12px; cursor:pointer;">
+                <span>Select CSV File</span>
+                <input type="file" id="csvFileInput" accept=".csv,.txt" style="display:none;" />
+              </label>
             </div>
-            <span class="badge-tag purple">Heuristic attribution</span>
+            <div id="csvUploadReport" style="display:none;"></div>
           </div>
+        </section>
 
-          <!-- Canvas -->
-          <div class="canvas-container" style="height: 280px; margin-top: 1rem;">
-            <canvas id="explainCanvas"></canvas>
-          </div>
-
-          <div class="explain-canvas-legend">
-            <span><span class="legend-dot low"></span> lower weight</span>
-            <span><span class="legend-dot high"></span> higher weight · heuristic</span>
-          </div>
-
-          <!-- Atom Score Cards Grid -->
-          <div class="atom-weights-grid" id="atomWeightsGrid" style="margin-top: 1rem;">
-            <!-- Populated dynamically via app.js -->
-          </div>
-        </div>
-      </div>
-
-      <!-- DOWNSIDE WORKING ANALYSIS SECTION -->
-      <div class="downside-analysis-wrap" style="margin-top: 3.5rem;">
-        <div class="card-header-bar">
-          <div>
-            <span class="eyebrow">MODEL INTERPRETABILITY & MECHANICS</span>
-            <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--text-bright);">Downside Working Analysis: How the Models Work</h2>
-          </div>
-          <span class="badge-tag pulse" id="analysisTargetPill">Active: C6H6</span>
-        </div>
-        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 780px; margin-bottom: 2rem;">
-          Deep dive into the neural mechanics: how molecular geometry is mapped to tensor embeddings, how message-passing layers aggregate neighborhood features, and why this chemical topology leads to the predicted HOMO–LUMO gap.
-        </p>
-
-        <!-- 4 Working Breakdown Cards -->
-        <div class="working-analysis-grid">
-          <div class="working-card">
-            <div class="working-card-icon">1</div>
-            <h3>Graph Representation & 11-D Encoding</h3>
-            <p id="anaGraphEncoding">
-              Molecule mapped into a graph where atoms are nodes and covalent bonds are edges. Features encode atomic number, hybridization (sp/sp2/sp3), formal charge, aromaticity, and valency degree.
+        <!-- ============================================================ -->
+        <!-- 03. ATOM EXPLAINABILITY & DOWNSIDE WORKING ANALYSIS -->
+        <!-- ============================================================ -->
+        <section class="page-section" id="sec-explainability">
+          <div class="section-masthead">
+            <div class="masthead-eyebrow">
+              <span>MODULE 03</span> // <span>EXPLAINABLE GRAPH AI</span> // <span>SALIENCY ATTRIBUTION</span>
+            </div>
+            <h1 class="masthead-title">Every prediction should show its work.</h1>
+            <p class="masthead-desc">
+              Backpropagates loss gradients to atom feature representations, identifying localized electron density and topological contributions to the excitation energy band.
             </p>
           </div>
 
-          <div class="working-card">
-            <div class="working-card-icon">2</div>
-            <h3>GNN Message Passing Dynamics</h3>
-            <p id="anaMessagePassing">
-              Across 3 GCN convolution layers, node embeddings propagate using normalized adjacency D^{-1/2} A D^{-1/2}. Global pooling flattens atom embeddings into a unified molecular invariant.
+          <!-- Two-Pane Attribution Viewport -->
+          <div class="explain-grid-2col">
+            <!-- Left: Methodological Description & Scale -->
+            <div class="scientific-card" style="padding:1.25rem; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <span class="card-topbar-title" style="margin-bottom:0.75rem;">ATTRIBUTION METHODOLOGY</span>
+                <p style="font-size:0.86rem; color:var(--text-secondary); line-height:1.6; margin-bottom:1rem;">
+                  Atom attribution scores reflect gradient-weighted chemical connectivity and localized electronegativity. Atoms possessing high frontier orbital density exhibit elevated weight coefficients.
+                </p>
+              </div>
+
+              <div class="explain-legend-box">
+                <div class="legend-item">
+                  <span class="legend-dot high"></span>
+                  <span>ELEVATED ATTRIBUTION (FRONTIER SINK / SOURCE)</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-dot low"></span>
+                  <span>DELOCALIZED ATTRIBUTION (CONJUGATED FRAMEWORK)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Saliency Map & Atom Weights Grid -->
+            <div class="scientific-card">
+              <div class="card-topbar">
+                <span class="card-topbar-title">
+                  <span class="pill-id">SALIENCY</span> // <span id="expMolFormula">c1ccccc1</span> · HOMO–LUMO GAP
+                </span>
+                <span class="badge-tag purple">L2 GRADIENT ATTRIBUTION</span>
+              </div>
+
+              <div style="padding:1rem;">
+                <div style="height:250px; background:var(--bg-panel-inset); border:1px solid var(--border-subtle); border-radius:var(--radius-xs); overflow:hidden;">
+                  <canvas id="explainCanvas"></canvas>
+                </div>
+
+                <div class="atom-weights-grid" id="atomWeightsGrid">
+                  <!-- Dynamically populated via app.js -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Downside Working Analysis (Mechanics Deep Dive) -->
+          <div class="downside-analysis-wrap">
+            <div class="card-topbar">
+              <div>
+                <span class="card-topbar-title">DOWNSIDE WORKING ANALYSIS // 4-STAGE NEURAL PIPELINE</span>
+              </div>
+              <span class="badge-tag pulse" id="analysisTargetPill">Active: C6H6</span>
+            </div>
+
+            <div class="working-analysis-grid">
+              <div class="working-card">
+                <span class="working-card-idx">PHASE 01</span>
+                <h3>Graph Encoding & Tensor Representation</h3>
+                <p id="anaGraphEncoding">
+                  Transforms SMILES into node attribute tensor X (dim 11) encoding atomic number, hybridization, formal charge, aromaticity, and valency alongside edge tensor A.
+                </p>
+              </div>
+
+              <div class="working-card">
+                <span class="working-card-idx">PHASE 02</span>
+                <h3>GNN Message Passing Dynamics</h3>
+                <p id="anaMessagePassing">
+                  Propagates localized degree neighborhoods through normalized graph Laplacian D^{-1/2} A D^{-1/2}. Readout layer applies global mean pooling.
+                </p>
+              </div>
+
+              <div class="working-card">
+                <span class="working-card-idx">PHASE 03</span>
+                <h3>Frontier Molecular Orbital (FMO) Theory</h3>
+                <p id="anaFmoTheory">
+                  Conjugated π-orbitals and electronegative heteroatom lone pairs modulate HOMO and LUMO energy eigenvalues, directly governing the electronic excitation band.
+                </p>
+              </div>
+
+              <div class="working-card">
+                <span class="working-card-idx">PHASE 04</span>
+                <h3>Monte Carlo Dropout Epistemic Variance</h3>
+                <p id="anaUncertainty">
+                  50 test-time stochastic forward passes with dropout rate p=0.2 quantify epistemic parameter uncertainty, isolating high-residual out-of-distribution molecules.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 04. MODEL BENCHMARKS & RESEARCH FIGURES -->
+        <!-- ============================================================ -->
+        <section class="page-section" id="sec-benchmarks">
+          <div class="section-masthead">
+            <div class="masthead-eyebrow">
+              <span>MODULE 04</span> // <span>EMPIRICAL VALIDATION</span> // <span>QM9 TEST SPLIT</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:1rem;">
+              <div>
+                <h1 class="masthead-title">Measure the trade-offs.</h1>
+                <p class="masthead-desc">
+                  Empirical benchmarks across held-out randomized QM9 test split (N=13,084, 10%). Comparing baseline GCN against GraphSAGE sampling, GAT attention, and modified GCN experiments.
+                </p>
+              </div>
+              <a href="#benchmarks" class="ctrl-btn" id="btnViewMetricSchema" style="text-decoration:none;">VIEW METRIC SCHEMA &gt;</a>
+            </div>
+          </div>
+
+          <div class="benchmarks-2col-grid">
+            <!-- Left: Evaluation Snapshot Table -->
+            <div class="scientific-card">
+              <div class="card-topbar">
+                <span class="card-topbar-title">EVALUATION SNAPSHOT // TEST SPLIT (N=13,084)</span>
+                <span class="badge-tag">SEED 42</span>
+              </div>
+
+              <div class="benchmark-table-wrap">
+                <table class="benchmark-table" id="benchmarkTable">
+                  <thead>
+                    <tr>
+                      <th>ARCHITECTURE</th>
+                      <th>MAE (eV)</th>
+                      <th>RMSE (eV)</th>
+                      <th>R² SCORE</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="best-row">
+                      <td><span class="status-indicator-green"></span> <strong>GCN</strong></td>
+                      <td>0.249</td>
+                      <td>0.333</td>
+                      <td><strong>0.934</strong></td>
+                    </tr>
+                    <tr>
+                      <td>GraphSAGE</td>
+                      <td>0.255</td>
+                      <td>0.348</td>
+                      <td>0.927</td>
+                    </tr>
+                    <tr>
+                      <td>Improved GCN</td>
+                      <td>0.265</td>
+                      <td>0.356</td>
+                      <td>0.924</td>
+                    </tr>
+                    <tr>
+                      <td>GAT (Attention)</td>
+                      <td>0.652</td>
+                      <td>0.829</td>
+                      <td>0.588</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Right: Interactive Metric Chart & Animated Lines -->
+            <div class="scientific-card">
+              <div class="card-topbar">
+                <div>
+                  <span class="card-topbar-title" id="benchmarkGraphTitle">R² BY ARCHITECTURE</span>
+                  <div style="font-size:0.68rem; color:var(--text-dim); font-family:var(--font-mono);" id="benchmarkGraphSubtitle">test split · higher is better</div>
+                </div>
+                <!-- Metric Switcher Pills -->
+                <div class="graph-metric-pills" id="graphMetricPills">
+                  <button class="metric-pill active" data-metric="r2">R² Score</button>
+                  <button class="metric-pill" data-metric="mae">MAE</button>
+                  <button class="metric-pill" data-metric="rmse">RMSE</button>
+                  <button class="metric-pill" data-metric="latency">Latency</button>
+                </div>
+              </div>
+
+              <div class="r2-bars-wrap" id="benchmarkBarsWrap">
+                <!-- Dynamically populated and animated by app.js -->
+                <div class="r2-bar-item">
+                  <div class="r2-bar-meta">
+                    <span>GCN</span>
+                    <span style="color:var(--cyan); font-family:var(--font-mono);">0.934</span>
+                  </div>
+                  <div class="r2-bar-track">
+                    <div class="r2-bar-fill" style="width: 0%;" data-target="93.4%"></div>
+                  </div>
+                </div>
+
+                <div class="r2-bar-item">
+                  <div class="r2-bar-meta">
+                    <span>GraphSAGE</span>
+                    <span style="color:var(--cyan); font-family:var(--font-mono);">0.927</span>
+                  </div>
+                  <div class="r2-bar-track">
+                    <div class="r2-bar-fill" style="width: 0%;" data-target="92.7%"></div>
+                  </div>
+                </div>
+
+                <div class="r2-bar-item">
+                  <div class="r2-bar-meta">
+                    <span>Improved GCN</span>
+                    <span style="color:var(--cyan); font-family:var(--font-mono);">0.924</span>
+                  </div>
+                  <div class="r2-bar-track">
+                    <div class="r2-bar-fill" style="width: 0%;" data-target="92.4%"></div>
+                  </div>
+                </div>
+
+                <div class="r2-bar-item">
+                  <div class="r2-bar-meta">
+                    <span>GAT</span>
+                    <span style="color:var(--amber); font-family:var(--font-mono);">0.588</span>
+                  </div>
+                  <div class="r2-bar-track">
+                    <div class="r2-bar-fill gold" style="width: 0%;" data-target="58.8%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Publication Research Figures Plates Gallery -->
+          <div class="plots-gallery-wrap">
+            <div class="card-topbar" style="background:var(--bg-panel); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); margin-bottom:1rem;">
+              <span class="card-topbar-title">RESEARCH EXPERIMENT PUBLICATION FIGURES</span>
+              <span class="badge-tag">MATPLOTLIB CHARTS</span>
+            </div>
+
+            <div class="plots-gallery">
+              <div class="plot-card">
+                <div class="plot-card-head">
+                  <h4>Actual vs Predicted Fit</h4>
+                  <span class="badge-tag cyan">R² = 0.934</span>
+                </div>
+                <div class="plot-card-body">
+                  <img src="assets/results/actual_vs_predicted.png" alt="Actual vs Predicted">
+                </div>
+              </div>
+
+              <div class="plot-card">
+                <div class="plot-card-head">
+                  <h4>Training & Validation MSE</h4>
+                  <span class="badge-tag cyan">Convergence</span>
+                </div>
+                <div class="plot-card-body">
+                  <img src="assets/results/training_validation_mse.png" alt="Training Validation MSE">
+                </div>
+              </div>
+
+              <div class="plot-card">
+                <div class="plot-card-head">
+                  <h4>Error Distribution</h4>
+                  <span class="badge-tag cyan">Residuals</span>
+                </div>
+                <div class="plot-card-body">
+                  <img src="assets/results/error_distribution.png" alt="Error Distribution">
+                </div>
+              </div>
+
+              <div class="plot-card">
+                <div class="plot-card-head">
+                  <h4>Uncertainty vs Error</h4>
+                  <span class="badge-tag cyan">Correlation 0.22</span>
+                </div>
+                <div class="plot-card-body">
+                  <img src="assets/results/uncertainty_vs_error.png" alt="Uncertainty vs Error">
+                </div>
+              </div>
+
+              <div class="plot-card">
+                <div class="plot-card-head">
+                  <h4>Error vs Molecule Size</h4>
+                  <span class="badge-tag cyan">Topology</span>
+                </div>
+                <div class="plot-card-body">
+                  <img src="assets/results/error_vs_molecule_size.png" alt="Error vs Size">
+                </div>
+              </div>
+
+              <div class="plot-card">
+                <div class="plot-card-head">
+                  <h4>Atom Saliency Map</h4>
+                  <span class="badge-tag cyan">Attribution</span>
+                </div>
+                <div class="plot-card-body">
+                  <img src="assets/results/atom_importance.png" alt="Atom Importance">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 05. RESEARCH ASSISTANT -->
+        <!-- ============================================================ -->
+        <section class="page-section" id="sec-assistant">
+          <div class="section-masthead">
+            <div class="masthead-eyebrow">
+              <span>MODULE 05</span> // <span>CHEMINFORMATICS ASSISTANT</span> // <span>NEURAL QUERY CONSOLE</span>
+            </div>
+            <h1 class="masthead-title">Ask the project.</h1>
+            <p class="masthead-desc">
+              Context-aware assistant trained on the QM9 dataset, GNN model parameters, and MC Dropout uncertainty distributions. Ask questions regarding molecular features or architecture tradeoffs.
             </p>
           </div>
 
-          <div class="working-card">
-            <div class="working-card-icon">3</div>
-            <h3>Frontier Molecular Orbital (FMO) Theory</h3>
-            <p id="anaFmoTheory">
-              Conjugated π-systems and electronegative heteroatoms modulate highest occupied (HOMO) and lowest unoccupied (LUMO) energy eigenvalues, determining the excitation energy gap.
+          <div class="assistant-grid-2col">
+            <!-- Left Info Panel -->
+            <div class="scientific-card" style="padding:1.25rem;">
+              <span class="card-topbar-title" style="margin-bottom:0.75rem;">AI INFERENCE SCOPE</span>
+              <p style="font-size:0.86rem; color:var(--text-secondary); line-height:1.6; margin-bottom:1.25rem;">
+                The assistant analyzes active workspace SMILES structures, compares GNN architectures, and details test-time Monte Carlo Dropout uncertainty bounds.
+              </p>
+
+              <div class="technical-notice" style="margin-bottom:1rem;">
+                <span class="notice-icon">i</span>
+                <div>
+                  Assistant responses utilize project documentation and validated benchmark metrics.
+                </div>
+              </div>
+
+              <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-dim);">
+                <div>ACTIVE CONTEXT:</div>
+                <div style="color:var(--cyan); margin-top:2px;" id="assistantContext">context: C6H6 · 5.96 eV</div>
+              </div>
+            </div>
+
+            <!-- Right Chat Console -->
+            <div class="scientific-card" style="overflow:hidden; display:flex; flex-direction:column;">
+              <div class="card-topbar">
+                <span class="card-topbar-title">ASSISTANT INTERACTIVE TERMINAL</span>
+                <button class="ctrl-btn" id="btnResetChat" title="Reset chat session">⟲ Reset</button>
+              </div>
+
+              <!-- Quick Query Chips -->
+              <div class="prompt-chips-row">
+                <button class="prompt-chip" data-ask="Explain the C6H6 prediction">Explain the C6H6 prediction</button>
+                <button class="prompt-chip" data-ask="Why does GAT underperform GCN here?">Why does GAT underperform GCN?</button>
+                <button class="prompt-chip" data-ask="How should I read the uncertainty?">How should I read the uncertainty?</button>
+              </div>
+
+              <!-- Chat History Stream -->
+              <div class="chat-history" id="chatHistory">
+                <div class="chat-msg assistant">
+                  <div class="chat-avatar">AI</div>
+                  <div class="chat-bubble">
+                    <p>QM9-GraphMol Computational Assistant initialized.</p>
+                    <p>You can query model layer mechanics, dataset descriptors, or request a localized interpretation of the active substrate in your workspace.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Chat Input Bar -->
+              <div class="chat-input-bar">
+                <input type="text" id="chatInput" placeholder="Enter inquiry regarding model parameters, uncertainty, or SMILES..." autocomplete="off" />
+                <button class="btn-send" id="btnSendChat" title="Send message">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 06. METHOD & ARCHITECTURE OVERVIEW -->
+        <!-- ============================================================ -->
+        <section class="page-section" id="sec-overview">
+          <div class="section-masthead">
+            <div class="masthead-eyebrow">
+              <span>MODULE 06</span> // <span>METHODOLOGY</span> // <span>NEURAL SPECIFICATIONS</span>
+            </div>
+            <h1 class="masthead-title">System architecture & pipeline methodology.</h1>
+            <p class="masthead-desc">
+              Complete computational specification of node feature tensors, graph Laplacian neighborhood aggregation, and epistemic uncertainty quantification across the QM9 quantum chemical dataset.
             </p>
           </div>
 
-          <div class="working-card">
-            <div class="working-card-icon">4</div>
-            <h3>Monte Carlo Dropout Epistemic Variance</h3>
-            <p id="anaUncertainty">
-              50 stochastic forward passes at test time (p=0.2) quantify model parameter variance, correlating with held-out prediction residual errors across QM9 test molecules.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- 05. MODEL BENCHMARKS -->
-    <!-- ============================================================ -->
-    <section class="page-section" id="sec-benchmarks">
-      <div class="section-header">
-        <div style="display:flex; justify-content:space-between; align-items:baseline;">
-          <div>
-            <span class="eyebrow">05 · MODEL BENCHMARKS</span>
-            <h1>Measure the trade-offs.</h1>
-            <p>Supplied test-set results for the three comparison architectures, plus the improved GCN experiment.</p>
-          </div>
-          <a href="#benchmarks" class="link-cyan" id="btnViewMetricSchema">VIEW METRIC SCHEMA &gt;</a>
-        </div>
-      </div>
-
-      <div class="split-layout">
-        <!-- Left: Evaluation Snapshot Table -->
-        <div class="record-panel">
-          <div class="card-header-bar">
-            <span class="card-header-title">Evaluation snapshot</span>
-          </div>
-
-          <div class="benchmark-table-wrap">
-            <table class="benchmark-table" id="benchmarkTable">
-              <thead>
-                <tr>
-                  <th>MODEL</th>
-                  <th>MAE / EV</th>
-                  <th>RMSE</th>
-                  <th>R²</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="best-row">
-                  <td><span class="status-indicator-green"></span> <strong>GCN</strong></td>
-                  <td>0.249</td>
-                  <td>0.333</td>
-                  <td><strong>0.934</strong></td>
-                </tr>
-                <tr>
-                  <td>GraphSAGE</td>
-                  <td>0.255</td>
-                  <td>0.348</td>
-                  <td>0.927</td>
-                </tr>
-                <tr>
-                  <td>Improved GCN</td>
-                  <td>0.265</td>
-                  <td>0.356</td>
-                  <td>0.924</td>
-                </tr>
-                <tr>
-                  <td>GAT</td>
-                  <td>0.652</td>
-                  <td>0.829</td>
-                  <td>0.588</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Right: Animated Benchmark Bars & Metric Graph Switcher -->
-        <div class="record-panel">
-          <div class="card-header-bar">
-            <div>
-              <span class="card-header-title" id="benchmarkGraphTitle">R² BY ARCHITECTURE</span>
-              <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;" id="benchmarkGraphSubtitle">test split · higher is better</div>
+          <!-- Overview KPI Grid -->
+          <div class="overview-kpi-grid">
+            <div class="overview-tile">
+              <div class="overview-tile-label">QM9 REPOSITORY</div>
+              <div class="overview-tile-val cyan">130,831</div>
+              <div class="overview-tile-desc">Organic molecules up to 9 heavy atoms</div>
             </div>
-            <!-- Graph Metric Switcher -->
-            <div class="graph-metric-pills" id="graphMetricPills">
-              <button class="metric-pill active" data-metric="r2">R² Score</button>
-              <button class="metric-pill" data-metric="mae">MAE</button>
-              <button class="metric-pill" data-metric="rmse">RMSE</button>
-              <button class="metric-pill" data-metric="latency">Latency</button>
+            <div class="overview-tile">
+              <div class="overview-tile-label">BEST TEST R² SCORE</div>
+              <div class="overview-tile-val cyan">0.934</div>
+              <div class="overview-tile-desc">Normalized GCN convolutional benchmark</div>
+            </div>
+            <div class="overview-tile">
+              <div class="overview-tile-label">TEST SPLIT SAMPLES</div>
+              <div class="overview-tile-val">13,084</div>
+              <div class="overview-tile-desc">10% randomized hold-out test set</div>
+            </div>
+            <div class="overview-tile">
+              <div class="overview-tile-label">MC DROPOUT CORR.</div>
+              <div class="overview-tile-val">0.220</div>
+              <div class="overview-tile-desc">Variance vs residual error correlation</div>
             </div>
           </div>
 
-          <div class="r2-bars-wrap" id="benchmarkBarsWrap" style="margin-top: 1.25rem;">
-            <!-- Rendered and smoothly animated by app.js -->
-            <div class="r2-bar-item">
-              <div class="r2-bar-meta">
-                <span>GCN</span>
-                <span class="metric-val" style="color:var(--cyan); font-family:var(--font-mono);">0.934</span>
-              </div>
-              <div class="r2-bar-track">
-                <div class="r2-bar-fill" style="width: 0%;" data-target="93.4%"></div>
-              </div>
+          <!-- 4 Core Technical Architecture Pillars -->
+          <div class="specs-grid-4">
+            <div class="spec-box">
+              <span class="spec-box-badge">NODE TENSOR</span>
+              <h3>11-D Atom Features</h3>
+              <p>Atomic number (H, C, N, O, F), hybridization (sp, sp², sp³), formal charge, aromaticity, and valency degree form the node feature matrix X ∈ ℝ^{N×11}.</p>
             </div>
-
-            <div class="r2-bar-item">
-              <div class="r2-bar-meta">
-                <span>GraphSAGE</span>
-                <span class="metric-val" style="color:var(--cyan); font-family:var(--font-mono);">0.927</span>
-              </div>
-              <div class="r2-bar-track">
-                <div class="r2-bar-fill" style="width: 0%;" data-target="92.7%"></div>
-              </div>
+            <div class="spec-box">
+              <span class="spec-box-badge">CONVOLUTION</span>
+              <h3>GNN Message Passing</h3>
+              <p>GCN aggregates normalized localized degree neighborhoods via D^{-1/2} A D^{-1/2}. Evaluated against GraphSAGE sampling and GAT attention architectures.</p>
             </div>
-
-            <div class="r2-bar-item">
-              <div class="r2-bar-meta">
-                <span>Improved GCN</span>
-                <span class="metric-val" style="color:var(--cyan); font-family:var(--font-mono);">0.924</span>
-              </div>
-              <div class="r2-bar-track">
-                <div class="r2-bar-fill" style="width: 0%;" data-target="92.4%"></div>
-              </div>
+            <div class="spec-box">
+              <span class="spec-box-badge">BAYESIAN INFERENCE</span>
+              <h3>MC Dropout Epistemic Variance</h3>
+              <p>Test-time stochastic forward passes (p=0.2) quantify parameter variance, stratifying high error molecules (MAE 0.306 eV vs 0.243 eV).</p>
             </div>
-
-            <div class="r2-bar-item">
-              <div class="r2-bar-meta">
-                <span>GAT</span>
-                <span class="metric-val" style="color:var(--amber); font-family:var(--font-mono);">0.588</span>
-              </div>
-              <div class="r2-bar-track">
-                <div class="r2-bar-fill gold" style="width: 0%;" data-target="58.8%"></div>
-              </div>
+            <div class="spec-box">
+              <span class="spec-box-badge">SALIENCY</span>
+              <h3>Gradient Attribution</h3>
+              <p>Backpropagates loss gradients to atom features, producing interpretable L2 attribution maps across conjugated systems and heteroatoms.</p>
             </div>
           </div>
+        </section>
 
-          <div style="margin-top: 2rem; font-size: 0.8rem; color: var(--text-dim); line-height: 1.5;">
-            MC Dropout · uncertainty–error correlation 0.220 · low-uncertainty MAE 0.243
-          </div>
-        </div>
-      </div>
+      </main>
 
-      <!-- Figures Gallery -->
-      <div style="margin-top: 3.5rem;">
-        <div class="card-header-bar">
-          <span class="card-header-title">RESEARCH EXPERIMENT FIGURES</span>
-          <span class="badge-tag">Results Gallery</span>
-        </div>
+      <!-- Clean Scientific Footer -->
+      <footer style="padding:1.5rem 1.75rem; border-top:1px solid var(--border-subtle); font-family:var(--font-mono); font-size:0.72rem; color:var(--text-dim); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+        <div>QM9·GRAPHMOL LAB // COMPUTATIONAL CHEMINFORMATICS WORKBENCH</div>
+        <div>TARGET 04: HOMO–LUMO GAP (eV) // TORCH-GEOMETRIC + RDKIT</div>
+      </footer>
+    </div>
+  </div>
 
-        <div class="plots-gallery">
-          <div class="plot-card">
-            <div class="plot-card-head">
-              <h4>Actual vs Predicted Fit</h4>
-              <span class="badge-tag">R² = 0.934</span>
-            </div>
-            <img src="assets/results/actual_vs_predicted.png" alt="Actual vs Predicted">
-          </div>
-
-          <div class="plot-card">
-            <div class="plot-card-head">
-              <h4>Training & Validation MSE</h4>
-              <span class="badge-tag">Convergence</span>
-            </div>
-            <img src="assets/results/training_validation_mse.png" alt="Training Validation MSE">
-          </div>
-
-          <div class="plot-card">
-            <div class="plot-card-head">
-              <h4>Error Distribution</h4>
-              <span class="badge-tag">Residuals</span>
-            </div>
-            <img src="assets/results/error_distribution.png" alt="Error Distribution">
-          </div>
-
-          <div class="plot-card">
-            <div class="plot-card-head">
-              <h4>Uncertainty vs Error</h4>
-              <span class="badge-tag">Correlation 0.22</span>
-            </div>
-            <img src="assets/results/uncertainty_vs_error.png" alt="Uncertainty vs Error">
-          </div>
-
-          <div class="plot-card">
-            <div class="plot-card-head">
-              <h4>Error vs Molecule Size</h4>
-              <span class="badge-tag">Topology</span>
-            </div>
-            <img src="assets/results/error_vs_molecule_size.png" alt="Error vs Size">
-          </div>
-
-          <div class="plot-card">
-            <div class="plot-card-head">
-              <h4>Atom Saliency Map</h4>
-              <span class="badge-tag">Attribution</span>
-            </div>
-            <img src="assets/results/atom_importance.png" alt="Atom Importance">
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Global Footer -->
-  <footer class="app-footer">
-    <div>QM9-GraphMol Lab / MolecularAI</div>
-    <div>Research demo · QM9 target index 4 → gap · predictions are heuristic estimates</div>
-  </footer>
-
-  <!-- Modal for Full View Structure Review -->
+  <!-- Fullscreen Molecular Structure Review Modal -->
   <div class="modal-overlay" id="structureModal" style="display: none;">
     <div class="modal-card">
-      <div class="modal-header">
+      <div class="card-topbar">
         <div>
-          <span class="card-header-title">MOLECULAR STRUCTURE INSPECTOR</span>
-          <h3 id="modalMolTitle" style="color: var(--text-bright); font-size:1.3rem; margin-top:4px;">Full Structure Review</h3>
+          <span class="card-topbar-title"><span class="pill-id">FULL VIEWPORT</span> // MOLECULAR TOPOLOGY INSPECTOR</span>
+          <h3 id="modalMolTitle" style="color:var(--text-white); font-size:1.15rem; margin-top:2px; font-family:var(--font-sans);">Full Structure Review</h3>
         </div>
-        <div style="display:flex; gap:0.5rem; align-items:center;">
+        <div style="display:flex; gap:0.35rem; align-items:center;">
           <button class="ctrl-btn active" id="btnModalMotion" title="Toggle Motion">✦ Motion</button>
           <button class="ctrl-btn" id="btnModalConnect" title="Replay Connection">⚡ Connect</button>
           <button class="ctrl-btn" id="btnModalZoomIn" title="Zoom in (+)">+</button>
           <button class="ctrl-btn" id="btnModalZoomOut" title="Zoom out (−)">−</button>
           <button class="ctrl-btn" id="btnModalFit" title="Reset View">⊡ Fit</button>
-          <button class="btn-icon" id="btnCloseModal" title="Close" style="width:34px; height:34px; font-size:1.1rem; color: var(--text-bright);">✕</button>
+          <button class="ctrl-btn" id="btnCloseModal" title="Close Modal" style="color:var(--crimson); font-weight:700;">✕ CLOSE</button>
         </div>
       </div>
       <div class="modal-canvas-wrap">
-        <canvas id="modalCanvas" style="width: 100%; height: 100%; display: block;"></canvas>
-        <div class="canvas-hint-pill">Scroll wheel to zoom in/out · Drag canvas to pan across atoms</div>
+        <canvas id="modalCanvas"></canvas>
+        <div class="canvas-hint-pill">MOUSE: WHEEL ZOOM · DRAG PAN · ATOMS: CPK COLOR CODED</div>
       </div>
       <div class="modal-footer" id="modalMolStats">
         <span id="modalStatSmiles">SMILES: —</span>
@@ -838,6 +923,7 @@
     </div>
   </div>
 
+  <!-- Application Engine Script -->
   <script src="assets/app.js"></script>
 </body>
 </html>

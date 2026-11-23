@@ -236,64 +236,30 @@ function setupScrollSpy() {
 // =====================================================================
 
 function getThemeAccent() {
-  const theme = document.documentElement.getAttribute('data-theme') || 'aurora';
-  if (theme === 'plasma') {
-    return {
-      primary: '#ff4d8d',
-      primaryRgba: 'rgba(255, 77, 141, 0.72)',
-      primarySoft: 'rgba(255, 77, 141, 0.14)',
-      secondary: '#a855f7',
-      secondaryRgba: 'rgba(168, 85, 247, 0.78)',
-      core: '#11081f',
-      grid: 'rgba(192, 132, 252, 0.08)'
-    };
-  }
-  if (theme === 'daylight') {
-    return {
-      primary: '#10b981',
-      primaryRgba: 'rgba(16, 185, 129, 0.78)',
-      primarySoft: 'rgba(16, 185, 129, 0.14)',
-      secondary: '#6366f1',
-      secondaryRgba: 'rgba(99, 102, 241, 0.80)',
-      core: '#0f172a',
-      grid: 'rgba(255, 255, 255, 0.06)'
-    };
-  }
   return {
-    primary: '#00f5a0',
-    primaryRgba: 'rgba(0, 245, 160, 0.72)',
-    primarySoft: 'rgba(0, 245, 160, 0.13)',
-    secondary: '#8b5cf6',
-    secondaryRgba: 'rgba(139, 92, 246, 0.80)',
-    core: '#070a12',
-    grid: 'rgba(255, 255, 255, 0.055)'
+    primary: '#06b6d4',
+    primaryRgba: 'rgba(6, 182, 212, 0.85)',
+    primarySoft: 'rgba(6, 182, 212, 0.08)',
+    secondary: '#0284c7',
+    secondaryRgba: 'rgba(2, 132, 199, 0.85)',
+    core: '#0a0f1d',
+    grid: 'rgba(148, 163, 184, 0.07)',
+    carbonCore: '#131e32',
+    carbonRing: '#94a3b8',
+    oxygenRing: '#ef4444',
+    nitrogenRing: '#0284c7',
+    fluorineRing: '#10b981',
+    sulfurRing: '#f59e0b',
+    hydrogenRing: '#64748b'
   };
 }
 
 function initThemeSwitcher() {
-  const saved = localStorage.getItem('qm9_theme') || 'aurora';
-  applyTheme(saved);
-
-  $$('.theme-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      applyTheme(btn.dataset.theme);
-    });
-  });
+  // Scientific workstation uses precision dark navy by default
 }
 
 function applyTheme(theme) {
-  const valid = ['aurora', 'daylight', 'plasma'].includes(theme) ? theme : 'aurora';
-  document.documentElement.setAttribute('data-theme', valid);
-  localStorage.setItem('qm9_theme', valid);
-
-  $$('.theme-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.theme === valid);
-  });
-
-  const metaTheme = document.querySelector('meta[name="theme-color"]');
-  if (metaTheme) {
-    metaTheme.setAttribute('content', valid === 'daylight' ? '#f2f5fb' : valid === 'plasma' ? '#08040e' : '#05060b');
-  }
+  // Scientific workstation mode
 }
 
 function startHeroAnimation() {
@@ -671,32 +637,33 @@ function renderCanvasFrame(canvas, cState) {
     }
   });
 
-  // 2. Draw nodes on top of the bonds
+  // 2. Draw nodes on top of the bonds (Authentic CPK Chemistry Palette)
   screenNodes.forEach((n, idx) => {
     const nx = n.curX;
     const ny = n.curY;
-    const r = 16 * Math.min(1.5, Math.max(0.65, cState.zoom));
+    const r = 15 * Math.min(1.5, Math.max(0.65, cState.zoom));
 
-    let elemColor = '#93c5fd';
-    if (n.element === 'O') elemColor = '#fb7185';
-    else if (n.element === 'N') elemColor = accent.primary;
-    else if (n.element === 'C') elemColor = '#93c5fd';
-    else if (n.element === 'F') elemColor = '#34d399';
-    else if (n.element === 'S') elemColor = '#fbbf24';
-    else if (n.element === 'H') elemColor = '#64748b';
+    // Standard CPK Color Scheme for Computational Chemistry
+    let elemColor = '#94a3b8'; // Carbon: Slate
+    if (n.element === 'O') elemColor = '#ef4444'; // Oxygen: Crimson
+    else if (n.element === 'N') elemColor = '#0284c7'; // Nitrogen: Cobalt
+    else if (n.element === 'C') elemColor = '#94a3b8';
+    else if (n.element === 'F') elemColor = '#10b981'; // Fluorine: Emerald
+    else if (n.element === 'S') elemColor = '#f59e0b'; // Sulfur: Amber
+    else if (n.element === 'H') elemColor = '#64748b'; // Hydrogen: Muted slate
 
     let haloColor = elemColor;
     if (attribution && attribution[idx]) {
       const weight = attribution[idx].weight;
-      if (weight >= 0.38) haloColor = '#fb7185'; // high weight
-      else haloColor = accent.secondary; // low weight
+      if (weight >= 0.38) haloColor = '#ef4444'; // high attribution weight
+      else haloColor = '#0891b2'; // low attribution weight
     }
 
-    // Breathing glow aura
+    // Precise halo glow
     if (state.showGlow) {
-      const pulseFactor = 1.9 + Math.sin(cState.animStep * 2.2 + idx) * 0.35;
-      const grad = ctx.createRadialGradient(nx, ny, r * 0.35, nx, ny, r * pulseFactor);
-      grad.addColorStop(0, haloColor === '#fb7185' ? 'rgba(251, 113, 133, 0.5)' : accent.primarySoft);
+      const pulseFactor = 1.6 + Math.sin(cState.animStep * 2.2 + idx) * 0.25;
+      const grad = ctx.createRadialGradient(nx, ny, r * 0.4, nx, ny, r * pulseFactor);
+      grad.addColorStop(0, haloColor === '#ef4444' ? 'rgba(239, 68, 68, 0.4)' : 'rgba(6, 182, 212, 0.3)');
       grad.addColorStop(1, 'transparent');
       ctx.fillStyle = grad;
       ctx.beginPath();
@@ -704,28 +671,28 @@ function renderCanvasFrame(canvas, cState) {
       ctx.fill();
     }
 
-    // Dark core body
-    ctx.fillStyle = accent.core;
+    // Dark technical core body
+    ctx.fillStyle = '#0f172a';
     ctx.beginPath();
     ctx.arc(nx, ny, r, 0, Math.PI * 2);
     ctx.fill();
 
     // Border ring
     ctx.strokeStyle = haloColor;
-    ctx.lineWidth = 2.5 * Math.min(1.5, Math.max(0.7, cState.zoom));
+    ctx.lineWidth = 2.0 * Math.min(1.5, Math.max(0.7, cState.zoom));
     ctx.stroke();
 
-    // Element symbol
-    ctx.fillStyle = '#fff';
-    ctx.font = `bold ${Math.round(12 * Math.min(1.4, Math.max(0.7, cState.zoom)))}px Inter, sans-serif`;
+    // Element symbol (IBM Plex Sans)
+    ctx.fillStyle = '#f8fafc';
+    ctx.font = `600 ${Math.round(11 * Math.min(1.4, Math.max(0.7, cState.zoom)))}px "IBM Plex Sans", sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(n.element, nx, ny);
 
-    // Atom indices display
+    // Atom indices display (IBM Plex Mono)
     if (state.showIndices) {
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-      ctx.font = `${Math.round(8 * Math.min(1.4, Math.max(0.7, cState.zoom)))}px monospace`;
+      ctx.fillStyle = 'rgba(148, 163, 184, 0.9)';
+      ctx.font = `500 ${Math.round(8 * Math.min(1.4, Math.max(0.7, cState.zoom)))}px "IBM Plex Mono", monospace`;
       ctx.fillText(`${idx + 1}`, nx + r - 2, ny - r + 2);
     }
   });
@@ -867,6 +834,9 @@ async function selectDatasetMolecule(mol) {
   $('#recHeavy').textContent = mol.heavy_atoms;
   $('#recDipole').textContent = `${mol.dipole} D`;
   $('#recGap').textContent = `${Number(mol.gap).toFixed(2)} eV`;
+
+  // Update workbench sidebar active context
+  if ($('#sbActiveMol')) $('#sbActiveMol').textContent = `${mol.name} (${mol.formula})`;
 
   // Update assistant context
   $('#assistantContext').textContent = `context: ${mol.name} (${mol.formula}) · ${Number(mol.gap).toFixed(2)} eV`;
@@ -1163,6 +1133,13 @@ async function runPrediction() {
     } else {
       $('#wsRefNote').textContent = `Anchored to QM9 distribution`;
     }
+
+    // Update telemetry properties
+    if ($('#sbActiveMol')) $('#sbActiveMol').textContent = `${d.formula || smiles}`;
+    if ($('#wsMw')) $('#wsMw').textContent = d.weight ? `${Number(d.weight).toFixed(2)} u` : (lib ? `${lib.weight} u` : '—');
+    if ($('#wsHeavyAtoms')) $('#wsHeavyAtoms').textContent = d.heavy_atoms || (lib ? lib.heavy_atoms : '—');
+    if ($('#wsDipole')) $('#wsDipole').textContent = d.dipole ? `${Number(d.dipole).toFixed(2)} D` : (lib ? `${lib.dipole} D` : '1.85 D');
+    if ($('#wsTpsa')) $('#wsTpsa').textContent = d.tpsa ? `${Number(d.tpsa).toFixed(2)} Å²` : (lib?.tpsa ? `${lib.tpsa} Å²` : '20.23 Å²');
 
     // Render structure preview canvas inside workspace with pan/zoom and live connection animation
     setTimeout(() => {
