@@ -260,13 +260,13 @@ function getThemeAccent() {
     };
   }
   return {
-    primary: '#2dd4bf',
-    primaryRgba: 'rgba(45, 212, 191, 0.72)',
-    primarySoft: 'rgba(45, 212, 191, 0.12)',
-    secondary: '#818cf8',
-    secondaryRgba: 'rgba(129, 140, 248, 0.75)',
+    primary: '#00f5a0',
+    primaryRgba: 'rgba(0, 245, 160, 0.72)',
+    primarySoft: 'rgba(0, 245, 160, 0.13)',
+    secondary: '#8b5cf6',
+    secondaryRgba: 'rgba(139, 92, 246, 0.80)',
     core: '#070a12',
-    grid: 'rgba(255, 255, 255, 0.04)'
+    grid: 'rgba(255, 255, 255, 0.055)'
   };
 }
 
